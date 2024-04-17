@@ -56,7 +56,7 @@ const LoginForm = () => {
 						onSubmit={onSubmit}
 					/>
 					{errorMessage && <span className="text-red-500">{errorMessage}</span>}
-					<Link href="/login/forgot-password" className="text-blue-600 text-sm py-2">
+					<Link href="/auth/login/forgot-password" className="text-blue-600 text-sm py-2">
 						Olvidé mi contraseña
 					</Link>
 				</div>
@@ -75,7 +75,7 @@ const LoginForm = () => {
 					/>
 					<p>
 						No tengo cuenta y quiero{' '}
-						<Link href="/register" className="text-blue-700">
+						<Link href="/auth/register" className="text-blue-700">
 							registrarme
 						</Link>
 					</p>

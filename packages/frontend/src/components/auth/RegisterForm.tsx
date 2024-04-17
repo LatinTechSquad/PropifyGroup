@@ -93,7 +93,7 @@ const RegisterForm = () => {
 						/>
 						<p className="text-sm my-2">
 							Si ya tenés cuenta{' '}
-							<Link href="/login" className="text-blue-600 text-sm">
+							<Link href="/auth/login" className="text-blue-600 text-sm">
 								inicia sesion aca
 							</Link>
 						</p>
