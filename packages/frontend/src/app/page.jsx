@@ -1,6 +1,6 @@
+"use client";
 import CardProduct from "@/components/card/CardProduct";
-import SetHome from "@/components/main/SetHome";
-
+import SlideBar from "@/components/Slide/SliderBar";
 import img1 from "@/assets/IMAGEN1.png";
 import img2 from "@/assets/IMAGEN2.png";
 import galpon from "@/assets/SETLOCAL1.png";
@@ -30,8 +30,8 @@ export default function Home() {
   return (
     <>
       <main className="w-full p-4">
-        <section className="flex mx-2 justify-center w-12/12 h-96 bg-light-color">
-          <SetHome />
+        <section>
+          <SlideBar />
         </section>
         <section>
           <div className="grid grid-cols-12 items-center justify-around gap-2 col-span-12">

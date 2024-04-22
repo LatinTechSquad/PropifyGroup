@@ -4,7 +4,7 @@ import Image from "next/image"
 import { LinkType } from "@/types/links.type"
 
 import logo from "@/assets/logo.svg"
-import ProfileCicle from "@/assets/Atomo-icono_profile_circle.png"
+import ProfileCicle from "@/assets/icons/Atomo-icono_profile_circle.png"
 
 
 type NavbarProps = {

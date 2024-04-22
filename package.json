@@ -7,12 +7,13 @@
     "doc": "docs"
   },
   "devDependencies": {
+    "@types/react-slick": "^0.23.13",
     "turbo": "^1.12.4"
   },
   "scripts": {
     "dev": "turbo run dev",
     "test": "turbo run test",
-    "test:unit":"turbo run test:unit",
+    "test:unit": "turbo run test:unit",
     "test:features": "turbo run test:features",
     "prisma:generate": "turbo run prisma:generate",
     "prisma:push": "turbo run prisma:push"
@@ -30,5 +31,9 @@
   "homepage": "https://github.com/dgsoto/Idea5-inmobiliaria#readme",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1"
+  }
 }
