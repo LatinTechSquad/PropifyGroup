@@ -1,0 +1,17 @@
+.comunas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.comunas-map {
+    width: 360px;
+    height: 360px;
+}
+.comunas-list {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+    padding-right: 4px;
+}
