@@ -10,6 +10,8 @@
     "turbo": "^1.12.4"
   },
   "scripts": {
+    "build": "turbo run build",
+    "start": "turbo run start",
     "dev": "turbo run dev",
     "test": "turbo run test",
     "test:unit":"turbo run test:unit",
