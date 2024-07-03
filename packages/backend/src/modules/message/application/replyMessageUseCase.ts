@@ -1,5 +1,13 @@
 import { IMessageRepository } from '../domain/IMessageRepository';
 import { inject, injectable } from 'tsyringe';
+import { ICreateMessageRequest } from './createMessage/ICreateMessageRequest';
+import { messageContainer } from '../messageContainer';
+import { UserEmail } from 'src/modules/User/domain/UserEmail';
+import { UserPhone } from 'src/modules/User/domain/UserPhone';
+import { Message } from '../domain/message';
+import { MessageId } from '../domain/messageId';
+import { typeMessage } from '../domain/typeMessage';
+import { typeSubject } from '../domain/typeSubject';
 @injectable()
 export class ReplyMessageUseCase {
   private readonly _MessageRepository: IMessageRepository;

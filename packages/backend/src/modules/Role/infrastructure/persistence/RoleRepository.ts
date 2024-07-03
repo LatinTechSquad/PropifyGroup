@@ -46,6 +46,9 @@ export class RoleRepository implements IRoleRepository {
 
   async getAll(): Promise<Role[]> {
     const rolesData = await this.prisma.role.findMany();
-    return rolesData.map((role) => new Role(new RoleId(role.id), new RoleName(role.role_name), new RoleState(role.role_state)));
+    return rolesData.map(
+      (role: { id: string; role_name: string; role_state: string }) =>
+        new Role(new RoleId(role.id), new RoleName(role.role_name), new RoleState(role.role_state)),
+    );
   }
 }

@@ -9,6 +9,6 @@ export class DeleteMessageUseCase {
   }
 
   async run(id: string): Promise<void> {
-    await this._MessageRepository.deleteMessage(id);
+    await this._MessageRepository.deleteMessage(id, ' ');
   }
 }

@@ -17,7 +17,7 @@ const getMessageByContentController = messageContainer.resolve<GetMessageByConte
 /*la idea es pasarles el email y user_id del token, en proceso*/
 router.get('/allMessages', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const userData = req.userData;
+    const userData = req.body;
     console.log(userData);
     if (userData) {
       await getMessagesController.run(userData, res, next);

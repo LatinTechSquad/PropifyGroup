@@ -107,7 +107,7 @@ export class messageRepositoryPrisma implements IMessageRepository {
       if (!messagesData) {
         return null;
       }
-      const messagesPromises = messagesData.map(async (messageData) => createTypeMessageFromData(messageData));
+      const messagesPromises = messagesData.map(async (messageData: any) => createTypeMessageFromData(messageData));
       const messages = await Promise.all(messagesPromises);
       return messages;
     } catch (error) {
@@ -122,7 +122,7 @@ export class messageRepositoryPrisma implements IMessageRepository {
         return null;
       }
 
-      const messagesPromises = messagesData.map(async (messageData) => createTypeMessageFromData(messageData));
+      const messagesPromises = messagesData.map(async (messageData: any) => createTypeMessageFromData(messageData));
       const messages = await Promise.all(messagesPromises);
       return messages;
     } catch (error) {
@@ -138,7 +138,7 @@ export class messageRepositoryPrisma implements IMessageRepository {
         return null;
       }
 
-      const messagesPromises = messagesData.map(async (messageData) => createTypeMessageFromData(messageData));
+      const messagesPromises = messagesData.map(async (messageData: any) => createTypeMessageFromData(messageData));
       const messages = await Promise.all(messagesPromises);
       return messages;
     } catch (error) {
@@ -156,7 +156,7 @@ export class messageRepositoryPrisma implements IMessageRepository {
       if (!messagesData) {
         return null;
       }
-      const messagesPromises = messagesData.map(async (messageData) => createTypeMessageFromData(messageData));
+      const messagesPromises = messagesData.map(async (messageData: any) => createTypeMessageFromData(messageData));
       const messages = await Promise.all(messagesPromises);
       return messages;
     } catch (error) {
