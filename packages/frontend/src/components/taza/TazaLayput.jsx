@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import graph from '@/assets/icons/grafica.png'
+import graph from '@/assets/icons/Grafica.png'
 import './taza.css'
 
 export default function TazaLayput() {

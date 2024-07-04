@@ -10,7 +10,7 @@ import Ingresos from '@/components/ingresos/IngresosLayput';
 import Pagos from '@/components/pagos/PagosLayout';
 import Comunas from '@/components/comuna/ComunaLayout';
 import Reciente from '@/components/recientes/RecientesLayout';
-import Transacciones from '@/components/Transacciones/TransaccionesLayout';
+import Transacciones from '@/components/transacciones/TransaccionesLayout';
 import Usuarios from '@/components/usuarios/UsuariosLayout';
 
 
