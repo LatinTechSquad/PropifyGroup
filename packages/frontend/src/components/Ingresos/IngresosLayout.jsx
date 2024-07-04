@@ -2,7 +2,7 @@
 import React from 'react';
 import './ingresos.css';
 
-export default function IngresosLayput() {
+export default function IngresosLayout() {
     return (
         <div className='ingresos-component card shadow-lg z-3'>
             {/* Ingresar una tabla como metrics */}

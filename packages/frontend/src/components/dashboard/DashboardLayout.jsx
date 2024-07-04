@@ -6,7 +6,7 @@ import Chat from '@/components/metrics/MetricsLayout';
 import Zona from '@/components/zona/ZonaLayout';
 import Taza from '@/components//taza/TazaLayput';
 import Porcentaje from '@/components/porcentaje/porcentajeLayout';
-import Ingresos from '@/components/ingresos/IngresosLayput';
+import Ingresos from '@/components/ingresos/IngresosLayout';
 import Pagos from '@/components/pagos/PagosLayout';
 import Comunas from '@/components/comuna/ComunaLayout';
 import Reciente from '@/components/recientes/RecientesLayout';
