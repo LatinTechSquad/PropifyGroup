@@ -38,7 +38,7 @@ const RegisterForm = () => {
 			const uuid = generateUUID(); // Genera un UUID único antes de enviar el formulario
 			formData.id = uuid; // Asigna el UUID generado al campo 'id' en los datos del formulario
 	  
-			const res = await fetch(`http://localhost:3002/api/users`, {
+			const res = await fetch(`https://api.propifygroup.com/api/users`, {
 			  method: 'POST',
 			  body: JSON.stringify(formData),
 			  headers: {
