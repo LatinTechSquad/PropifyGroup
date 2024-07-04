@@ -32,7 +32,7 @@ const Navbar = ({ links }: NavbarProps) => {
       </div>
 
       <div>
-        <Link href="/login" className="flex items-center gap-1 bg-secondary-color font-semibold px-4 py-2 rounded-2xl">
+        <Link href="/auth/login" className="flex items-center gap-1 bg-secondary-color font-semibold px-4 py-2 rounded-2xl">
           <BiSolidUser /> Iniciar sesion
         </Link>
       </div>

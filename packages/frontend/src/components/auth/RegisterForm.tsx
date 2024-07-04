@@ -1,6 +1,7 @@
 'use client';
 import { FormProvider, useForm } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import InputText from '@/components/form/InputText';
 import SubmitButton from '@/components/form/SubmitButton';
@@ -28,6 +29,8 @@ const RegisterForm = () => {
 		formState: { errors },
 	} = methods;
 
+	const router = useRouter();
+
 	const onSubmit = (data: FormData) => {
 		const handleSubmitAsync = async () => {
 		  const formData = methods.getValues(); // Obtén los datos del formulario usando useForm
@@ -42,6 +45,9 @@ const RegisterForm = () => {
 				'Content-Type': 'application/json',
 			  },
 			});
+			if(res.ok){
+				router.push('/auth/login');
+			}
 			const resJSON = await res.json();
 			console.log(resJSON);
 		  } catch (error) {

@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import './porce.css'
-import Image from 'next/Image'
+import Image from 'next/image'
 import graph2 from '@/assets/icons/Group24.png'
 
 export default function porcentajeLayout() {

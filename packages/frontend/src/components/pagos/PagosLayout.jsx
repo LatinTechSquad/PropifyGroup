@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import Image from 'next/Image'
+import Image from 'next/image'
 import Link from 'next/link'
 import visa from '@/assets/icons/visa.png'
 import bancaria from '@/assets/icons/bancaria.png'
