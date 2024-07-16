@@ -1,5 +1,5 @@
 export interface ICreateRoleRequest {
   id: string;
-  roleName: string;
-  roleState: string;
+  name: string;
+  state: string;
 }

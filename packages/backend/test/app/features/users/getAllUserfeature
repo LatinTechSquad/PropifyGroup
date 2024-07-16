@@ -1,0 +1,9 @@
+Feature: Get all users
+  In order to see all users
+  As an admin
+  I want to retrieve the list of all users
+
+  Scenario: Get all users
+    Given I send a GET request to "/v1/users"
+    Then the response status code should be 200
+    And the response should be

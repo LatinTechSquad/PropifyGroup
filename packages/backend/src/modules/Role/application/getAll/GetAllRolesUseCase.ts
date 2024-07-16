@@ -18,8 +18,8 @@ export class GetAllRolesUseCase implements IUseCase<void, GetAllRolesResponse[]>
 
     const list: GetAllRolesResponse[] = roles.map((role) => ({
       id: role.id.value,
-      roleName: role.roleName.getValue(),
-      roleState: role.roleState.getValue(),
+      name: role.name.getValue(),
+      state: role.state.getValue(),
     }));
     return list;
   }

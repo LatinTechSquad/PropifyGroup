@@ -1,0 +1,29 @@
+Feature: Update an existing user
+  In order to update my account information
+  As an existing user
+  I want to update my account details
+
+  Scenario: Update user with valid information
+    Given I send a PUT request to "/v1/users/d7cd6582-7010-48e3-aab4-c1b69d38c511" with body:
+      """
+      {
+          "firstname": "Jose",
+          "lastname": "Lopez",
+          "email": "jose.lopez@gmail.com",
+          "password": "newpassword123",
+          "phone": "9876543210"
+      }
+      """
+    Then the response status code should be 200
+    And the response should be
+
+  Scenario: Update user with invalid information
+    Given I send a PUT request to "/v1/users/d7cd6582-7010-48e3-aab4-c1b69d38c511" with body:
+      """
+      {
+          "firstname": 123,
+          "lastname": "Lopez",
+          "email": "jose.lopez@gmail.com"
+      }
+      """
+    Then the response status code should be 422

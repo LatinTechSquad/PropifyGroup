@@ -16,6 +16,6 @@ export class GetRoleByIdUseCase implements IUseCase<string, GetRoleByIdResponse>
     const role = await this._repository.getById(id);
     if (role === null) throw new RoleIdNotExistError();
 
-    return new GetRoleByIdResponse(role.id.value, role.roleName.getValue(), role.roleState.getValue());
+    return new GetRoleByIdResponse(role.id.value, role.name.getValue(), role.state.getValue());
   }
 }

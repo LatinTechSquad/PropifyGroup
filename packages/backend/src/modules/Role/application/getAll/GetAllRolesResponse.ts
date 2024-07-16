@@ -1,7 +1,7 @@
 export class GetAllRolesResponse {
   constructor(
     public id: string,
-    public roleName: string,
-    public roleState: string,
+    public name: string,
+    public state: string,
   ) {}
 }

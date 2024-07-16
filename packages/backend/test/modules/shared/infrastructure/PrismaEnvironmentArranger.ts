@@ -15,7 +15,20 @@ export class PrismaEnvironmentArranger extends EnvironmentArranger {
 
   private async cleanDatabase(): Promise<void> {
     try {
-      await this.prisma.user.deleteMany({});
+      await this.prisma.user.deleteMany({
+        where: {
+          email: {
+            not: 'test@test.com',
+          },
+        },
+      });
+      await this.prisma.role.deleteMany({
+        where: {
+          name: {
+            not: 'Administrador',
+          },
+        },
+      });
     } catch (error) {
       throw new Error(`Unable to clean test database: ${error}`);
     }

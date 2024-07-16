@@ -19,8 +19,8 @@ export class RoleRepository implements IRoleRepository {
     await this.prisma.role.create({
       data: {
         id: roleData.id.value,
-        role_name: roleData.roleName.toString(),
-        role_state: roleData.roleState.toString(),
+        name: roleData.name.toString(),
+        state: roleData.state.toString(),
       },
     });
   }
@@ -29,8 +29,8 @@ export class RoleRepository implements IRoleRepository {
     await this.prisma.role.update({
       where: { id: roleData.id.value },
       data: {
-        role_name: roleData.roleName.toString(),
-        role_state: roleData.roleState.toString(),
+        name: roleData.name.toString(),
+        state: roleData.state.toString(),
       },
     });
   }
@@ -41,14 +41,13 @@ export class RoleRepository implements IRoleRepository {
 
   async getById(id: string): Promise<Role | null> {
     const roleData = await this.prisma.role.findUnique({ where: { id } });
-    return roleData ? new Role(new RoleId(roleData.id), new RoleName(roleData.role_name), new RoleState(roleData.role_state)) : null;
+    return roleData ? new Role(new RoleId(roleData.id), new RoleName(roleData.name), new RoleState(roleData.state)) : null;
   }
 
   async getAll(): Promise<Role[]> {
     const rolesData = await this.prisma.role.findMany();
     return rolesData.map(
-      (role: { id: string; role_name: string; role_state: string }) =>
-        new Role(new RoleId(role.id), new RoleName(role.role_name), new RoleState(role.role_state)),
+      (role: { id: string; name: string; state: string }) => new Role(new RoleId(role.id), new RoleName(role.name), new RoleState(role.state)),
     );
   }
 }

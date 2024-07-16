@@ -9,10 +9,14 @@
     {
       "url": "http://localhost:3002",
       "description": ""
+    },
+    {
+      "url": "https://api.propifygroup.com",
+      "description": ""
     }
   ],
   "paths": {
-    "/api/users/": {
+    "/v1/users/": {
       "post": {
         "tags": [
           "Users"
@@ -40,7 +44,7 @@
         }
       }
     },
-    "/api/auth/login": {
+    "/v1/auth/login": {
       "post": {
         "tags": [
           "Authentication"
@@ -68,7 +72,7 @@
         }
       }
     },
-    "/api/roles/": {
+    "/v1/roles/": {
       "post": {
         "tags": [
           "Roles"
@@ -107,7 +111,7 @@
         }
       }
     },
-    "/api/roles/{id}": {
+    "/v1/roles/{id}": {
       "put": {
         "tags": [
           "Roles"
@@ -251,11 +255,11 @@
             "type": "string",
             "example": "string"
           },
-          "roleName": {
+          "name": {
             "type": "string",
             "example": "string"
           },
-          "roleState": {
+          "state": {
             "type": "string",
             "example": "string"
           }
@@ -267,11 +271,11 @@
       "UpdateRoleRequest": {
         "type": "object",
         "properties": {
-          "roleName": {
+          "name": {
             "type": "string",
             "example": "string"
           },
-          "roleState": {
+          "state": {
             "type": "string",
             "example": "string"
           }

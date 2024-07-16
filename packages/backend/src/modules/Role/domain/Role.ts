@@ -5,14 +5,14 @@ import { RoleState } from './RoleState';
 
 export class Role extends AggregateRoot {
   id: RoleId;
-  roleName: RoleName;
-  roleState: RoleState;
+  name: RoleName;
+  state: RoleState;
 
   constructor(id: RoleId, roleName: RoleName, roleState: RoleState) {
     super();
     this.id = id;
-    this.roleName = roleName;
-    this.roleState = roleState;
+    this.name = roleName;
+    this.state = roleState;
   }
 
   static async create(id: RoleId, roleName: RoleName, roleStatus: RoleState): Promise<Role> {
@@ -20,19 +20,19 @@ export class Role extends AggregateRoot {
   }
 
   async updateFields(roleName: RoleName, roleState: RoleState): Promise<void> {
-    this.roleName = roleName;
-    this.roleState = roleState;
+    this.name = roleName;
+    this.state = roleState;
   }
 
   toPrimitives(): Record<string, unknown> {
     return {
       id: this.id.value,
-      roleName: this.roleName.getValue(),
-      roleState: this.roleState.getValue(),
+      roleName: this.name.getValue(),
+      roleState: this.state.getValue(),
     };
   }
 
   static fromPrimitives(data: Record<string, unknown>): Role {
-    return new Role(new RoleId(data.id as string), new RoleName(data.roleName as string), new RoleState(data.roleState as string));
+    return new Role(new RoleId(data.id as string), new RoleName(data.name as string), new RoleState(data.state as string));
   }
 }

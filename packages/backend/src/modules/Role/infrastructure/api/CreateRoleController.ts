@@ -10,8 +10,8 @@ import { ICreateRoleRequest } from '../../application/create/ICreateRoleRequest'
 type CreateRoleRequest = Request & {
   body: {
     id: string;
-    roleName: string;
-    roleState: string;
+    Name: string;
+    State: string;
   };
 };
 
@@ -25,9 +25,9 @@ export class CreateRoleController implements IController {
 
   public async run(req: CreateRoleRequest, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { id, roleName, roleState } = req.body;
+      const { id, name, state } = req.body;
 
-      const result = await this._createRoleUseCase.run({ id, roleName, roleState });
+      const result = await this._createRoleUseCase.run({ id, name, state });
 
       const response = new ResponseBase<void>(true, httpStatus.CREATED, httpStatus[201], undefined, result);
 

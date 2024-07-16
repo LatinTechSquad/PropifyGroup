@@ -1,5 +1,5 @@
 export interface IUpdateRoleRequest {
   id: string;
-  roleName: string;
-  roleState: string;
+  name: string;
+  state: string;
 }

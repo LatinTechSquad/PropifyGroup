@@ -20,7 +20,7 @@ export class CreateRoleUseCase implements IUseCase<ICreateRoleRequest, void> {
     const checkRoleById = await this._repository.getById(req.id);
     if (checkRoleById !== null) throw new RoleIdAlreadyExistError();
 
-    const role = await Role.create(new RoleId(req.id), new RoleName(req.roleName), new RoleState(req.roleState));
+    const role = await Role.create(new RoleId(req.id), new RoleName(req.name), new RoleState(req.state));
     await this._repository.create(role);
   }
 }

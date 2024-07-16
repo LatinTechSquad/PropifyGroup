@@ -19,7 +19,7 @@ export class Server {
     this.express.use(json());
     this.express.use(urlencoded({ extended: true }));
     this.express.use(invalidArgumentErrorHandler);
-    this.express.use('/api', router);
+    this.express.use('/v1', router);
     this.express.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput));
   }
 
@@ -27,7 +27,7 @@ export class Server {
     await new Promise<void>((resolve) => {
       const env = this.express.get('env') as string;
       this.httpServer = this.express.listen(parseInt(this.port), '0.0.0.0', () => {
-        console.log(`  Frontoffice Backend App is running at http://${process.env.DOMAIN}:${this.port}/api in ${env} mode`);
+        console.log(`  Frontoffice Backend App is running at http://${process.env.DOMAIN}:${this.port}/v1 in ${env} mode`);
         console.log('  Press CTRL-C to stop\n');
         resolve();
       });

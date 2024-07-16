@@ -12,8 +12,8 @@ type UpdateRoleRequest = Request & {
     id: string;
   };
   body: {
-    roleName: string;
-    roleState: string;
+    name: string;
+    state: string;
   };
 };
 
@@ -28,9 +28,9 @@ export class UpdateRoleController implements IController {
   public async run(req: UpdateRoleRequest, res: Response, next: NextFunction): Promise<void> {
     try {
       const { id } = req.params;
-      const { roleName, roleState } = req.body;
+      const { name, state } = req.body;
 
-      const result = await this._updateRoleUseCase.run({ id, roleName, roleState });
+      const result = await this._updateRoleUseCase.run({ id, name, state });
 
       const response = new ResponseBase<void>(true, httpStatus.OK, httpStatus[200], undefined, result);
 

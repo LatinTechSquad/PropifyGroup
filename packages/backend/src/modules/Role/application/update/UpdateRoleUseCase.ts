@@ -17,7 +17,7 @@ export class UpdateRoleUseCase implements IUseCase<IUpdateRoleRequest, void> {
   public async run(req: IUpdateRoleRequest): Promise<void> {
     const role = await this._repository.getById(req.id);
     if (role === null) throw new RoleIdNotExistError();
-    role.updateFields(new RoleName(req.roleName), new RoleState(req.roleState));
+    role.updateFields(new RoleName(req.name), new RoleState(req.state));
     await this._repository.update(role);
   }
 }

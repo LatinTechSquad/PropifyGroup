@@ -11,6 +11,10 @@ const doc = {
       url: 'http://localhost:3002',
       description: '',
     },
+    {
+      url: 'https://api.propifygroup.com',
+      description: '',
+    },
   ],
   components: {
     securitySchemes: {
@@ -35,12 +39,12 @@ const doc = {
       },
       CreateRoleRequest: {
         id: 'string',
-        roleName: 'string',
-        roleState: 'string',
+        name: 'string',
+        state: 'string',
       },
       UpdateRoleRequest: {
-        roleName: 'string',
-        roleState: 'string',
+        name: 'string',
+        state: 'string',
       },
     },
   },

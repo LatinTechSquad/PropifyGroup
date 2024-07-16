@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { Given, Then, BeforeAll, AfterAll, BeforeStep } from '@cucumber/cucumber';
+import { Given, Then, BeforeAll, AfterAll } from '@cucumber/cucumber';
 import assert from 'assert';
 import { BackendApp } from '../../../../src/app/BackendApp';
 import { EnvironmentArranger } from '../../../modules/shared/infrastructure/EnvironmentArranger';
@@ -17,13 +17,9 @@ BeforeAll(async () => {
   await application.start();
 });
 
-BeforeStep(async () => {
-  await (await environmentArranger).arrange();
-  await (await environmentArranger).close();
-});
 AfterAll(async () => {
-  await (await environmentArranger).arrange();
-  await (await environmentArranger).close();
+  await environmentArranger.arrange();
+  await environmentArranger.close();
   await application.stop();
 });
 
@@ -31,10 +27,6 @@ Given('I send a GET request to {string}', (route: string) => {
   if (application.httpServer) {
     _request = request(application.httpServer).get(route);
   }
-});
-
-Then('the response status code should be {int}', async (status: number) => {
-  _response = await _request.expect(status);
 });
 
 Given('I send a POST request to {string} with body:', (route: string, body: string) => {
@@ -45,10 +37,33 @@ Given('I send a POST request to {string} with body:', (route: string, body: stri
   }
 });
 
-Then('the response should be', () => {
-  assert.deepStrictEqual(_response.body, {
-    succesed: true,
-    code: 201,
-    status_code: 'Created',
-  });
+Given('I send a PUT request to {string} with body:', (route: string, body: string) => {
+  if (application.httpServer) {
+    _request = request(application.httpServer)
+      .put(route)
+      .send(JSON.parse(body) as object);
+  }
+});
+
+Given('I send a DELETE request to {string}', (route: string) => {
+  if (application.httpServer) {
+    _request = request(application.httpServer).delete(route);
+  }
+});
+
+Then('the response status code should be {int}', async (status: number) => {
+  _response = await _request.expect(status);
+});
+
+Then('the response should be:', (expectedResponse: string) => {
+  try {
+    const expected = JSON.parse(expectedResponse);
+    assert.deepStrictEqual(_response.body, expected);
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Failed to parse expected response JSON: ${error.message}`);
+    } else {
+      throw new Error('Failed to parse expected response JSON: unknown error');
+    }
+  }
 });

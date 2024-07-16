@@ -4,21 +4,29 @@ Feature: Create a new role
   I want to create a new role
 
   Scenario: Create a valid new role
-    Given I send a POST request to "/api/roles" with body:
+    Given I send a POST request to "/v1/roles" with body:
       """
       {
-          "role_name": "Admin",
-          "role_state": "Active"
+        "id": "38d436a9-f512-4e95-b871-553bab740e3a",
+        "name": "Test",
+        "state": "Active"
       }
       """
     Then the response status code should be 201
-    And the response should be
-
-  Scenario: Create an invalid new role
-    Given I send a POST request to "/api/roles" with body:
+    And the response should be:
       """
       {
-          "role_state": "Active"
+        "succesed": true,
+        "code": 201,
+        "status_code": "Created"
+      }
+      """
+
+  Scenario: Create an invalid new role
+    Given I send a POST request to "/v1/roles" with body:
+      """
+      {
+        "role_state": "Active"
       }
       """
     Then the response status code should be 422
