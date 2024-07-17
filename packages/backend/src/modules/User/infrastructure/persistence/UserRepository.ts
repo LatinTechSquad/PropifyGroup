@@ -59,4 +59,37 @@ export class UserRepository implements IUserRepository {
         )
       : null;
   }
+  async getAll(): Promise<User[]> {
+    const usersData = await this.prisma.user.findMany();
+    return usersData.map(
+      (userData) =>
+        new User(
+          new UserId(userData.id),
+          new UserFirstname(userData.firstname),
+          new UserLastname(userData.lastname),
+          new UserEmail(userData.email),
+          new UserPassword(userData.password, container.resolve('HashService')),
+          new UserPhone(userData.cell_phone),
+        ),
+    );
+  }
+
+  async update(userData: User): Promise<void> {
+    await this.prisma.user.update({
+      where: { id: userData.id.value },
+      data: {
+        firstname: userData.firstname.toString(),
+        lastname: userData.lastname.toString(),
+        email: userData.email.toString(),
+        password: userData.password.toString(),
+        cell_phone: userData.phone.toString(),
+      },
+    });
+  }
+
+  async delete(userId: UserId): Promise<void> {
+    await this.prisma.user.delete({
+      where: { id: userId.value },
+    });
+  }
 }

@@ -34,8 +34,34 @@ export class User extends AggregateRoot {
   ): Promise<User> {
     return new User(id, firstname, lastname, email, password, phone);
   }
+  async update(firstname: UserFirstname, lastname: UserLastname, email: UserEmail, phone: UserPhone): Promise<void> {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.email = email;
+    this.phone = phone;
+  }
+ // async updatePassword(newPassword: string): Promise<void> {
+  //  this.password = await new UserPassword(newPassword, ).validate();
+  //}
 
-  toPrimitives() {
-    throw new Error('Method not implemented.');
+  toPrimitives(): Record<string, unknown> {
+    return {
+      id: this.id.value,
+      firstname: this.firstname.getValue(),
+      lastname: this.lastname.getValue(),
+      email: this.email.getValue(),
+      phone: this.phone.getValue(),
+    };
+  }
+
+  static fromPrimitives(data: Record<string, unknown>): User {
+    return new User(
+      new UserId(data.id as string),
+      new UserFirstname(data.firstname as string),
+      new UserLastname(data.lastname as string),
+      new UserEmail(data.email as string),
+      '', // You should retrieve the password securely, this is a placeholder
+      new UserPhone(data.phone as string),
+    );
   }
 }

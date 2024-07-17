@@ -8,6 +8,19 @@ import { IHashService } from './domain/services/IHashService';
 import { CreateUserController } from './infrastructure/api/CreateUserController';
 import { UserRepository } from './infrastructure/persistence/UserRepository';
 import { HashService } from './infrastructure/security/HashService';
+import { IUseCase } from '../Shared/application/IUseCase';
+import { ICreateUserRequest } from './application/create/ICreateUserRequest';
+import { DeleteUserUseCase } from './application/delete/DeleteUserUseCase';
+import { GetAllUsersUseCase } from './application/getAll/GetAllUsersUseCase';
+import { GetUserByIdUseCase } from './application/getById/GetUserByIdUseCase';
+import { UpdateUserUseCase } from './application/update/UpdateUserUseCase';
+import { DeleteUserController } from './infrastructure/api/DeleteUserController';
+import { GetAllUsersController } from './infrastructure/api/GetAllUsersController';
+import { GetUserByIdController } from './infrastructure/api/GetUserByIdController';
+import { UpdateUserController } from './infrastructure/api/UpdateUserController';
+import { IUpdateUserRequest } from './application/update/IUpdateUserRequest';
+import { GetAllUsersResponse } from './application/getAll/GetAllUsersResponse';
+import { GetUserByIdResponse } from './application/getById/GetUserByIdResponse';
 
 container.register<IUserRepository>('UserRepository', { useClass: UserRepository });
 container.register('ExistUserByEmail', { useClass: ExistUserByEmail });
@@ -15,5 +28,17 @@ container.register('ExistUserById', { useClass: ExistUserById });
 container.register('CreateUserUseCase', { useClass: CreateUserUseCase });
 container.register<IController>('CreateUserController', { useClass: CreateUserController });
 container.register<IHashService>('HashService', { useClass: HashService });
+
+container.register<IUserRepository>('UserRepository', { useClass: UserRepository });
+container.register<IUseCase<ICreateUserRequest, void>>('CreateUserUseCase', { useClass: CreateUserUseCase });
+container.register<IUseCase<IUpdateUserRequest, void>>('UpdateUserUseCase', { useClass: UpdateUserUseCase });
+container.register<IUseCase<string, void>>('DeleteUserUseCase', { useClass: DeleteUserUseCase });
+container.register<IUseCase<string, GetUserByIdResponse>>('GetUserByIdUseCase', { useClass: GetUserByIdUseCase });
+container.register<IUseCase<string, GetAllUsersResponse[]>>('GetAllUsersUseCase', { useClass: GetAllUsersUseCase });
+container.register<IController>('CreateUserController', { useClass: CreateUserController });
+container.register<IController>('UpdateUserController', { useClass: UpdateUserController });
+container.register<IController>('DeleteUserController', { useClass: DeleteUserController });
+container.register<IController>('GetUserByIdController', { useClass: GetUserByIdController });
+container.register<IController>('GetAllUsersController', { useClass: GetAllUsersController });
 
 export { container as userContainer };
