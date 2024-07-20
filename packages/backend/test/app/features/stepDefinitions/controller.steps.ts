@@ -9,6 +9,7 @@ let _request: request.Test;
 let application: BackendApp;
 let _response: request.Response;
 let userId: string;
+let roleId: string;
 
 const environmentArranger: EnvironmentArranger = testContainer.resolve('PrismaEnvironmentArranger');
 
@@ -28,13 +29,23 @@ Before(async function () {
       password: 'test12345',
       phone: '1234567898',
     });
-    userId = 'd7cd6582-7010-48e3-aab4-c1b69d38c513'; // Guardar el ID del usuario creado
+    userId = 'd7cd6582-7010-48e3-aab4-c1b69d38c513';
+
+    await request(application.httpServer).post('/v1/roles').send({
+      id: '38d436a9-f512-4e95-b871-553bab740e3a',
+      name: 'Test Role',
+      state: 'Active',
+    });
+    roleId = '38d436a9-f512-4e95-b871-553bab740e3a';
   }
 });
 
 After(async function () {
   if (userId) {
     await request(application.httpServer as any).delete(`/v1/users/${userId}`);
+  }
+  if (roleId) {
+    await request(application.httpServer as any).delete(`/v1/roles/${roleId}`);
   }
 });
 

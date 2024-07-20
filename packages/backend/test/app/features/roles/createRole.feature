@@ -7,7 +7,7 @@ Feature: Create a new role
     Given I send a POST request to "/v1/roles" with body:
       """
       {
-        "id": "38d436a9-f512-4e95-b871-553bab740e3a",
+        "id": "38d436a9-f512-4e95-b871-553bab740e3b",
         "name": "Test",
         "state": "Active"
       }
