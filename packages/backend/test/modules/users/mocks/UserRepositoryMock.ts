@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 import { IUserRepository } from '../../../../src/modules/User/domain/IUserRepository';
 import { User } from '../../../../src/modules/User/domain/User';
-import { UserId } from '../../../../src/modules/User/domain/UserId';
 
 export class UserRepositoryMock implements IUserRepository {
   private createMock: jest.Mock;
@@ -45,9 +44,9 @@ export class UserRepositoryMock implements IUserRepository {
     return Promise.resolve();
   }
 
-  async delete(userId: UserId): Promise<void> {
-    this.users = this.users.filter((user) => user.id.value !== userId.value);
-    this.deleteMock(userId);
+  async delete(id: string): Promise<void> {
+    this.users = this.users.filter((user) => user.id.value !== id);
+    this.deleteMock(id);
     return Promise.resolve();
   }
 
@@ -64,7 +63,7 @@ export class UserRepositoryMock implements IUserRepository {
     expect(this.updateMock).toHaveBeenCalledWith(expected);
   }
 
-  assertDeleteHaveBeenCalledWith(expected: UserId): void {
+  assertDeleteHaveBeenCalledWith(expected: string): void {
     expect(this.deleteMock).toHaveBeenCalledWith(expected);
   }
 

@@ -53,7 +53,7 @@ describe('UserRepository', () => {
       const user = await UserMother.random();
       await repository.create(user);
 
-      await repository.delete(user.id);
+      await repository.delete(user.id.value);
 
       const deletedUser = await repository.getById(user.id.value);
       expect(deletedUser).toBeNull();

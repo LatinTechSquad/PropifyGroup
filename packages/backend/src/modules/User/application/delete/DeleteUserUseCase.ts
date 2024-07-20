@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 import { inject, injectable } from 'tsyringe';
 import { IUserRepository } from '../../domain/IUserRepository';
-import { UserId } from '../../domain/UserId';
 import { IUseCase } from 'src/modules/Shared/application/IUseCase';
 import { UserIdNotExistError } from '../../domain/errors/UserIdNotExistError';
 
@@ -18,6 +17,6 @@ export class DeleteUserUseCase implements IUseCase<string, void> {
 
     if (user === null) throw new UserIdNotExistError();
 
-    await this._repository.delete(new UserId(id));
+    await this._repository.delete(id);
   }
 }
