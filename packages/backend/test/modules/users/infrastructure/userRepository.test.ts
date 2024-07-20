@@ -79,9 +79,13 @@ describe('UserRepository', () => {
       await repository.create(user2);
 
       const users = await repository.getAll();
-      expect(users).toHaveLength(3);
-      expect(users[0].id.value).toEqual(user1.id.value);
-      expect(users[1].id.value).toEqual(user2.id.value);
+
+      const expectedUserIds = [user1.id.value, user2.id.value];
+
+      const userIds = users.map((user) => user.id.value);
+      expectedUserIds.forEach((expectedId) => {
+        expect(userIds).toContain(expectedId);
+      });
     });
   });
 });

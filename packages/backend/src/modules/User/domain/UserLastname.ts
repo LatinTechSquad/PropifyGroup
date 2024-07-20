@@ -12,8 +12,10 @@ export class UserLastname extends StringValueObject {
       throw new InvalidArgumentError(`The 'Lastname' property: '${value}' must be between 2 and 50 characters`);
     }
 
-    if (!/^[A-Za-záéíóúüÜñÑ\s]+$/u.test(value)) {
-      throw new InvalidArgumentError(`The 'Lastname' property: '${value}' can only contain alphabetical characters, spaces, and accents.`);
+    if (!/^[A-Za-záéíóúüÜñÑ\s'-]+$/u.test(value)) {
+      throw new InvalidArgumentError(
+        `The 'Lastname' property: '${value}' can only contain alphabetical characters, spaces, accents, hyphens, and apostrophes.`,
+      );
     }
   }
 }
