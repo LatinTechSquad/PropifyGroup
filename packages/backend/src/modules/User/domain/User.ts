@@ -40,9 +40,9 @@ export class User extends AggregateRoot {
     this.email = email;
     this.phone = phone;
   }
- // async updatePassword(newPassword: string): Promise<void> {
-  //  this.password = await new UserPassword(newPassword, ).validate();
-  //}
+  async updatePassword(newPassword: string): Promise<void> {
+    this.password = await new UserPassword(newPassword);
+  }
 
   toPrimitives(): Record<string, unknown> {
     return {
@@ -60,7 +60,7 @@ export class User extends AggregateRoot {
       new UserFirstname(data.firstname as string),
       new UserLastname(data.lastname as string),
       new UserEmail(data.email as string),
-      '', // You should retrieve the password securely, this is a placeholder
+      new UserPassword(data.email as string),
       new UserPhone(data.phone as string),
     );
   }

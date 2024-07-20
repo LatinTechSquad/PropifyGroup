@@ -7,7 +7,7 @@ Feature: Register an new user
     Given I send a POST request to "/v1/users" with body:
       """
       {
-          "id":"d7cd6582-7010-48e3-aab4-c1b69d38c511",
+          "id":"d7cd6582-7010-48e3-aab4-c1b69d38c512",
           "firstname": "Jose Luis",
           "lastname": "Sandoval",
           "email": "docs.huehue@gmail.com",
@@ -29,7 +29,7 @@ Feature: Register an new user
     Given I send a POST request to "/v1/users" with body:
       """
       {
-          "id":"d7cd6582-7010-48e3-aab4-c1b69d38c511",
+          "id":"d7cd6582-7010-48e3-aab4-c1b69d38c512",
           "firstname": 10,
           "lastname": "Sandoval",
           "email": "docs.huehue@gmail.com",

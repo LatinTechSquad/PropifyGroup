@@ -3,8 +3,8 @@ import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/infrastructure/api/IController';
 import httpStatus from 'http-status';
 import { inject, injectable } from 'tsyringe';
-import { GetAllUsersUseCase } from '../../application/get/GetAllUsersUseCase';
 import { ResponseBase } from '../../../Shared/application/ResponseBase';
+import { GetAllUsersUseCase } from '../../application/getAll/GetAllUsersUseCase';
 
 @injectable()
 export class GetAllUsersController implements IController {

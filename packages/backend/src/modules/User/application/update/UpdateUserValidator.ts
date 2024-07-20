@@ -1,6 +1,7 @@
-import { body } from 'express-validator';
+import { body, param } from 'express-validator';
 
 export const UpdateUserValidator = [
+  param('id').exists().withMessage("The 'id' field is required").isUUID().withMessage("The 'Id' field must be a valid Uuid").trim().escape(),
   body('firstname')
     .exists()
     .withMessage("The 'Firstname' field is required")

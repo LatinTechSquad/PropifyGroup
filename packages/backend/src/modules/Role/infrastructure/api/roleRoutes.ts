@@ -10,6 +10,7 @@ import { RoleIdAlreadyExistError } from '../../domain/errors/RoleIdAlreadyExistE
 import { RoleIdNotExistError } from '../../domain/errors/RoleIdNotExistError';
 import { UpdateRoleValidator } from '../../application/update/UpdateRoleValidator';
 import { DeleteRoleValidator } from '../../application/delete/DeleteRoleValidator';
+import { GetRoleByIdValidator } from '../../application/getById/GetRoleByIdValidator';
 
 const router = Router();
 
@@ -49,7 +50,7 @@ router.delete('/:id', DeleteRoleValidator, validateReqSchema, async (req: Reques
   await deleteController.run(req, res, next);
 });
 
-router.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
+router.get('/:id', GetRoleByIdValidator, validateReqSchema, async (req: Request, res: Response, next: NextFunction) => {
   /**
     #swagger.tags = ['Roles']
     }
@@ -78,7 +79,7 @@ router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     res
       .status(400)
       .json(
-        new ResponseBase<void>(false, httpStatus.BAD_REQUEST, httpStatus[400], 'Error processing Role', undefined, [
+        new ResponseBase<void>(false, httpStatus.BAD_REQUEST, httpStatus[402], 'Error processing Role', undefined, [
           "Role with this 'id' was not been registred",
         ]),
       );

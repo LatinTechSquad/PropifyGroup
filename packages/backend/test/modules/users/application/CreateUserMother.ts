@@ -6,7 +6,6 @@ import { UserId } from '../../../../src/modules/User/domain/UserId';
 import { UserLastname } from '../../../../src/modules/User/domain/UserLastname';
 import { UserPassword } from '../../../../src/modules/User/domain/UserPassword';
 import { UserPhone } from '../../../../src/modules/User/domain/UserPhone';
-import { userContainer } from '../../../../src/modules/User/userContainer';
 
 export class CreateUserMother {
   static create(
@@ -27,13 +26,12 @@ export class CreateUserMother {
     };
   }
   static async random(): Promise<ICreateUserRequest> {
-    const hashedPassword = await new UserPassword(faker.internet.password(), userContainer.resolve('HashService')).validate();
     return this.create(
       new UserId(faker.string.uuid()),
       new UserFirstname(faker.person.firstName()),
       new UserLastname(faker.person.lastName()),
       new UserEmail(faker.internet.email()),
-      hashedPassword,
+      new UserPassword(faker.internet.password()),
       new UserPhone(faker.string.numeric('##########')),
     );
   }

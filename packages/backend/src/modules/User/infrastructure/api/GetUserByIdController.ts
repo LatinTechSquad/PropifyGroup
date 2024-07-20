@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { IController } from '../../../Shared/infrastructure/api/IController';
 import httpStatus from 'http-status';
 import { inject, injectable } from 'tsyringe';
-import { GetUserByIdUseCase } from '../../application/get/GetUserByIdUseCase';
+import { GetUserByIdUseCase } from '../../application/getById/GetUserByIdUseCase';
 import { ResponseBase } from '../../../Shared/application/ResponseBase';
 
 type GetUserByIdRequest = Request & {

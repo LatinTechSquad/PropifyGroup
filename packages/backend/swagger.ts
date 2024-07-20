@@ -32,6 +32,13 @@ const doc = {
         password: 'string',
         phone: 'string',
       },
+      UpdateUserRequest: {
+        firstname: 'string',
+        lastname: 'string',
+        email: 'string',
+        password: 'string',
+        phone: 'string',
+      },
 
       LoginRequest: {
         email: 'string',

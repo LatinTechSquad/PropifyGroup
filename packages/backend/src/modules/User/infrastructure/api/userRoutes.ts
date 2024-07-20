@@ -9,6 +9,9 @@ import { ResponseBase } from '../../../Shared/application/ResponseBase';
 import { UserIdAlreadyExistError } from '../../domain/errors/UserIdAlreadyExistError';
 import { UserEmailAlreadyExistError } from '../../domain/errors/UserEmailAlreadyExistError';
 import { UpdateUserValidator } from '../../application/update/UpdateUserValidator';
+import { UserIdNotExistError } from '../../domain/errors/UserIdNotExistError';
+import { DeleteUserValidator } from '../../application/delete/DeleteUserValidator';
+import { GetUserByIdValidator } from '../../application/getById/GetUserByIdValidator';
 
 const router = Router();
 
@@ -30,18 +33,37 @@ router.post('/', CreateUserValidator, validateReqSchema, async (req: Request, re
 });
 
 router.put('/:id', UpdateUserValidator, validateReqSchema, async (req: Request, res: Response, next: NextFunction) => {
+  /**
+    #swagger.tags = ['Users']
+    #swagger.requestBody = {
+        required: true,
+        schema: { $ref: "#/components/schemas/UpdateUserRequest" }
+    }
+     */
   await updateUserController.run(req, res, next);
 });
 
-router.delete('/:id', async (req: Request, res: Response, next: NextFunction) => {
+router.delete('/:id', DeleteUserValidator, validateReqSchema, async (req: Request, res: Response, next: NextFunction) => {
+  /**
+    #swagger.tags = ['Users']
+    }
+     */
   await deleteUserController.run(req, res, next);
 });
 
-router.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
+router.get('/:id', GetUserByIdValidator, validateReqSchema, async (req: Request, res: Response, next: NextFunction) => {
+  /**
+    #swagger.tags = ['Users']
+    }
+     */
   await getUserByIdController.run(req, res, next);
 });
 
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
+  /**
+    #swagger.tags = ['Users']
+    }
+     */
   await getAllUsersController.run(req, res, next);
 });
 router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
@@ -59,6 +81,14 @@ router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
       .json(
         new ResponseBase<void>(false, httpStatus.BAD_REQUEST, httpStatus[400], 'Error registering new User', undefined, [
           "User with this 'id' already has been registred",
+        ]),
+      );
+  } else if (err instanceof UserIdNotExistError) {
+    res
+      .status(404)
+      .json(
+        new ResponseBase<void>(false, httpStatus.BAD_REQUEST, httpStatus[400], 'Error searching User', undefined, [
+          "User with this 'id' has not been found",
         ]),
       );
   } else {

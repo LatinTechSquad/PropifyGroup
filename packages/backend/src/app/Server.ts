@@ -26,8 +26,9 @@ export class Server {
   async listen(): Promise<void> {
     await new Promise<void>((resolve) => {
       const env = this.express.get('env') as string;
+      const domain = process.env.DOMAIN ?? 'localhost';
       this.httpServer = this.express.listen(parseInt(this.port), '0.0.0.0', () => {
-        console.log(`  Frontoffice Backend App is running at http://${process.env.DOMAIN}:${this.port}/v1 in ${env} mode`);
+        console.log(`  Frontoffice Backend App is running at http://${domain}:${this.port}/v1 in ${env} mode`);
         console.log('  Press CTRL-C to stop\n');
         resolve();
       });

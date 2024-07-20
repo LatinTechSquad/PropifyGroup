@@ -32,7 +32,7 @@ export class UpdateUserController implements IController {
       const { id } = req.params;
       const { firstname, lastname, email, password, phone } = req.body;
 
-      const result = await this._updateUserUseCase.run(id, { firstname, lastname, email, password, phone });
+      const result = await this._updateUserUseCase.run({ id, firstname, lastname, email, password, phone });
 
       const response = new ResponseBase<void>(true, httpStatus.OK, httpStatus[200], undefined, result);
 
