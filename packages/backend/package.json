@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc && npm run prisma:build",
-    "prisma:build":"cd dist/src/modules/Shared/infrastructure/persistence && npx prisma generate",
+    "prisma:build": "cd dist/src/modules/Shared/infrastructure/persistence && npx prisma generate",
     "start": "node dist/src/app/start.js",
     "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/app/start.ts",
     "test": "npm run test:unit && npm run test:features",
@@ -15,12 +15,12 @@
     "prisma:push": "cd src/modules/Shared/infrastructure/persistence && npx prisma db push",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",
-    "swagger": "ts-node swagger.ts"
+    "swagger": "ts-node swagger.ts",
+    "prepare": "husky"
   },
   "prisma": {
     "schema": "src/modules/Shared/infrastructure/persistence/prisma/schema.prisma"
   },
-  
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -40,6 +40,8 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@cucumber/cucumber": "^10.3.1",
     "@faker-js/faker": "^8.4.1",
     "@stylistic/eslint-plugin": "^1.6.1",
