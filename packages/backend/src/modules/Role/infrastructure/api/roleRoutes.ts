@@ -11,6 +11,7 @@ import { RoleIdNotExistError } from '../../domain/errors/RoleIdNotExistError';
 import { UpdateRoleValidator } from '../../application/update/UpdateRoleValidator';
 import { DeleteRoleValidator } from '../../application/delete/DeleteRoleValidator';
 import { GetRoleByIdValidator } from '../../application/getById/GetRoleByIdValidator';
+import { authMiddleware } from '../../../../modules/Auth/infrastructure/api/AuthMiddleware';
 
 const router = Router();
 
@@ -20,6 +21,7 @@ const deleteController: IController = roleContainer.resolve('DeleteRoleControlle
 const getRoleByIdController: IController = roleContainer.resolve('GetRoleByIdController');
 const getAllRolesController: IController = roleContainer.resolve('GetAllRolesController');
 
+router.use(authMiddleware);
 router.post('/', CreateRoleValidator, validateReqSchema, async (req: Request, res: Response, next: NextFunction) => {
   /**
     #swagger.tags = ['Roles']
@@ -27,6 +29,7 @@ router.post('/', CreateRoleValidator, validateReqSchema, async (req: Request, re
         required: true,
         schema: { $ref: "#/components/schemas/CreateRoleRequest" }
     }
+    #swagger.security = [{ "bearerAuth": [] }]    
      */
   await createController.run(req, res, next);
 });
@@ -38,6 +41,7 @@ router.put('/:id', UpdateRoleValidator, validateReqSchema, async (req: Request, 
         required: true,
         schema: { $ref: "#/components/schemas/UpdateRoleRequest" }
     }
+    #swagger.security = [{ "bearerAuth": [] }]
      */
   await updateController.run(req, res, next);
 });
@@ -45,7 +49,7 @@ router.put('/:id', UpdateRoleValidator, validateReqSchema, async (req: Request, 
 router.delete('/:id', DeleteRoleValidator, validateReqSchema, async (req: Request, res: Response, next: NextFunction) => {
   /**
     #swagger.tags = ['Roles']
-    }
+    #swagger.security = [{ "bearerAuth": [] }]
      */
   await deleteController.run(req, res, next);
 });
@@ -53,7 +57,7 @@ router.delete('/:id', DeleteRoleValidator, validateReqSchema, async (req: Reques
 router.get('/:id', GetRoleByIdValidator, validateReqSchema, async (req: Request, res: Response, next: NextFunction) => {
   /**
     #swagger.tags = ['Roles']
-    }
+    #swagger.security = [{ "bearerAuth": [] }]
      */
   await getRoleByIdController.run(req, res, next);
 });
@@ -61,7 +65,7 @@ router.get('/:id', GetRoleByIdValidator, validateReqSchema, async (req: Request,
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
   /**
     #swagger.tags = ['Roles']
-    }
+    #swagger.security = [{ "bearerAuth": [] }]
      */
   await getAllRolesController.run(req, res, next);
 });

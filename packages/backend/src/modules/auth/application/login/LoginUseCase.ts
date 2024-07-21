@@ -6,12 +6,17 @@ import { NotMatchedPasswordError } from '../../domain/errors/NotMatchedPassError
 import { NotExistEmailError } from '../../domain/errors/NotExistEmailError';
 import { ILoginRequest } from './ILoginRequest';
 import { LoginDTO } from './LoginDto';
+import { IUserTokenRepository } from '../../domain/IUserTokenRepository';
 
 @injectable()
 export class LoginUseCase {
   private readonly _repository: IAuthRepository;
-  constructor(@inject('AuthRepository') authRepository: IAuthRepository) {
+  private readonly _tokenRepository: IUserTokenRepository;
+  private readonly _jwtSecret: string = 'thiismysecretkey';
+
+  constructor(@inject('AuthRepository') authRepository: IAuthRepository, @inject('UserTokenRepository') tokenRepository: IUserTokenRepository) {
     this._repository = authRepository;
+    this._tokenRepository = tokenRepository;
   }
 
   public async run(req: ILoginRequest): Promise<LoginDTO> {
@@ -20,8 +25,16 @@ export class LoginUseCase {
 
     const isMatched = await argon2.verify(user.password, req.password);
     if (!isMatched) throw new NotMatchedPasswordError();
-    const generateJWT = jwt.sign({ id: user.id, email: user.email }, 'thiismysecretkey');
-    const auth = new LoginDTO(user.id, generateJWT);
-    return auth;
+
+    const claims = {
+      sub: user.id,
+      name: `${user.firstname} ${user.lastname}`,
+      roles: user.role_id,
+    };
+
+    const token = jwt.sign(claims, this._jwtSecret, { expiresIn: '1h' });
+    await this._tokenRepository.createToken(user.id, token, new Date(Date.now() + 3600 * 1000));
+
+    return new LoginDTO(user.id, token);
   }
 }

@@ -3,17 +3,17 @@ import swaggerAutogen from 'swagger-autogen';
 const doc = {
   info: {
     version: 'v1.0.0',
-    title: 'Bonpland Api documentation',
-    description: '',
+    title: 'PropifyGroup API Documentation',
+    description: 'Documentation for the PropifyGroup API',
   },
   servers: [
     {
       url: 'http://localhost:3002',
-      description: '',
+      description: 'Local development server',
     },
     {
       url: 'https://api.propifygroup.com',
-      description: '',
+      description: 'Production server',
     },
   ],
   components: {
@@ -21,6 +21,7 @@ const doc = {
       bearerAuth: {
         type: 'http',
         scheme: 'bearer',
+        bearerFormat: 'JWT',
       },
     },
     schemas: {
@@ -55,6 +56,11 @@ const doc = {
       },
     },
   },
+  security: [
+    {
+      bearerAuth: [],
+    },
+  ],
 };
 
 const outputFile = './swagger_output.json';

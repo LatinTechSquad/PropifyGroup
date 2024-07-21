@@ -87,11 +87,11 @@ model real_estate_photos {
 }
 
 model role {
-  id         String     @id @default(uuid())
-  name  String    @db.VarChar(50)
-  state String    @db.VarChar(10)
-  assigned   assigned[]
-  user       user[]
+  id       String     @id @default(uuid())
+  name     String     @db.VarChar(50)
+  state    String     @db.VarChar(10)
+  assigned assigned[]
+  user     user[]
 }
 
 model transaction {
@@ -118,6 +118,25 @@ model user {
   property_publication property_publication[]
   transaction          transaction[]
   role                 role                   @relation(fields: [role_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user_token           userToken[]
+  userClaim            userClaim[]
+}
+
+model userToken {
+  id        String   @id @default(uuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  revoked   Boolean  @default(false)
+  user      user     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model userClaim {
+  id         String @id @default(uuid())
+  userId     String
+  claimType  String
+  claimValue String
+  user       user   @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 enum assigned_status {
