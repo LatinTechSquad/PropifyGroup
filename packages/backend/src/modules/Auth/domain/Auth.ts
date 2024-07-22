@@ -1,4 +1,3 @@
-// En el dominio
 export class Auth {
   id: string;
   token: string;

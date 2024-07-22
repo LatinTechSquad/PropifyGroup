@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import httpStatus from 'http-status';
-import { ResponseBase } from '../../../../modules/Shared/application/ResponseBase';
-import { User } from '../../../../modules/User/domain/User';
+import { ResponseBase } from '../../../Shared/application/ResponseBase';
+import { User } from '../../../User/domain/User';
 
 interface AuthRequest extends Request {
   user?: User;
