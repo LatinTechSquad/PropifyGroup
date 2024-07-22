@@ -1,0 +1,10 @@
+footer {
+    color: var(--font-dark);
+    background-color: var(--color-fondo);
+    box-shadow: 0px 0px 10px darkgray;
+}
+.footerSection {
+    color: var(--font-dark);
+    font-size: var(--fotn-16);
+    font-family: 'Ninuto',sans-serif;
+}

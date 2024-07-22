@@ -16,9 +16,9 @@ import Usuarios from '@/components/usuarios/UsuariosLayout';
 
 export default function DashboardLayout() {
   return (
-    <div className='d-flex flex-row align-items-center w-100'>
+    <div className=' dashboard'>
         
-        <section className="container-fluid dashboard">
+        <section className="container-fluid">
 
             <h2>Dashboard</h2>
             <article className="stats row">

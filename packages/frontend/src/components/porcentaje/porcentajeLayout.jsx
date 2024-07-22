@@ -1,31 +1,31 @@
 'use client'
 import React from 'react'
-import './porce.css'
+import Style from './porce.module.css'
 import Image from 'next/image'
 import graph2 from '@/assets/icons/Group24.png'
 
 export default function porcentajeLayout() {
-    return (
-        <div className="border border-light-subtle shadow-lg p-4 porce">
-          <p className="text-center">Porsentaje de ocupación (Nov - Feb)</p>
-    
-          <div className="porce-body">
-    
-            <div className='porce-text'>
-              <p className='porce-total'>10 k</p>
-              <small>Total ocupados</small>
-            </div>
-    
-            <div className='porce-gaph'>
-              <Image src={graph2}></Image>
-            </div>
-    
-          </div>
-          <div className="porce-stats">
-            <small>Última actualización ayer</small>
-            <small>Subió 60%</small>
-          </div>
-    
+  return (
+    <div className={Style.porce}>
+      <p className={Style.title}>Porsentaje de ocupación (Nov - Feb)</p>
+
+      <div className={Style.porceBody}>
+
+        <div className={Style.porceText}>
+          <p className={Style.porceTotal}>10 k</p>
+          <small>Total ocupados</small>
         </div>
-      )
+
+        <div className={Style.porceGaph}>
+          <Image src={graph2}></Image>
+        </div>
+
+      </div>
+      <div className={Style.porceStats}>
+        <small>Última actualización ayer</small>
+        <small>Subió 60%</small>
+      </div>
+
+    </div>
+  )
 }

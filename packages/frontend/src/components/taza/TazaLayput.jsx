@@ -2,32 +2,32 @@
 import React from 'react'
 import Image from 'next/image'
 import graph from '@/assets/icons/Grafica.png'
-import './taza.css'
+import Style from './taza.module.css'
 
 export default function TazaLayput() {
-    return (
-        <div className="card shadow-sm p-4 taza h-100">
-          <p className="taza-title">Taza de conversión de propiedades</p>
-            
-          <div className="taza-body">
-          <div>
-            <ul className="taza-list l">
-              <li className="taza-list-item">Departamentos</li>
-              <li className="taza-list-item">Casa</li>
-              <li className="taza-list-item">Duplex</li>
-            </ul>
-          </div>
-    
-          <div className="taza-graph">
-           <Image src={graph}
-           width={100}
-           >
+  return (
+    <div className={Style.taza}>
+      <p className={Style.title}>Taza de conversión de propiedades</p>
+        
+      <div className={Style.body}>
+      <div>
+        <ul className={Style.list}>
+          <li className={Style.listItem}>Departamentos</li>
+          <li className={Style.listItem}>Casa</li>
+          <li className={Style.listItem}>Duplex</li>
+        </ul>
+      </div>
 
-           </Image>
-          </div>
-          </div>
-          
-          
-        </div>
-      )
+      <div className="taza-graph">
+       <Image src={graph}
+       width={100}
+       >
+
+       </Image>
+      </div>
+      </div>
+      
+      
+    </div>
+  )
 }

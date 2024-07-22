@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
+
 import Link from 'next/Link'
 import Image from 'next/Image'
 import './sidebar.css'
