@@ -14,7 +14,7 @@
     "start": "turbo run start",
     "dev": "turbo run dev",
     "test": "turbo run test",
-    "test:unit":"turbo run test:unit",
+    "test:unit": "turbo run test:unit",
     "test:features": "turbo run test:features",
     "prisma:generate": "turbo run prisma:generate",
     "prisma:push": "turbo run prisma:push"
@@ -32,5 +32,6 @@
   "homepage": "https://github.com/dgsoto/Idea5-inmobiliaria#readme",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "packageManager": "npm@9.6.7"
 }
