@@ -1,9 +1,13 @@
-import LoginForm from "@/components/auth/LoginForm"
+import RootLayout from '../../layout';
+import LoginForm from './LoginForm';
 
 const Login = () => {
-    return <div className="flex justify-center py-16">
-        <LoginForm />
-    </div>
-}
+  return (
+    <RootLayout showSidebar={false}>
+    <div className='flex justify-center py-16'>
+      <LoginForm />
+    </div></RootLayout>
+  );
+};
 
-export default Login
+export default Login;

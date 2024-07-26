@@ -4,7 +4,7 @@ import Image from 'next/image'
 import graph from '@/assets/icons/Grafica.png'
 import Style from './taza.module.css'
 
-export default function TazaLayput() {
+export default function TazaLayout() {
   return (
     <div className={Style.taza}>
       <p className={Style.title}>Taza de conversión de propiedades</p>

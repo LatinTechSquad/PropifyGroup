@@ -1,7 +1,7 @@
 import React from 'react'
 import './chat.css'
-import Image from 'next/Image'
-import group from '@/assets/icons/icons-group.png'
+import Image from 'next/image'
+import group from '@/assets/icons/icon-group.png'
 
 export default function ChatLayout() {
     return (

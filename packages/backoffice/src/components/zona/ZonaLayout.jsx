@@ -1,13 +1,13 @@
-'use client'
-import React from 'react'
-import Font from './zona.module.css'
-
+// ZonaLayout.js
+import React from 'react';
+import Font from './zona.module.css';
 
 export default function ZonaLayout() {
   return (
     <div className={Font.table}>
       <p className={Font.head}>Ocupación de alquileres por zona</p>
-        <table>
+      <table>
+        <thead>
           <tr>
             <th></th>
             <th className={Font.title}>Lanús</th>
@@ -15,6 +15,8 @@ export default function ZonaLayout() {
             <th className={Font.title}>Olivos</th>
             <th className={Font.title}>Quilmes</th>
           </tr>
+        </thead>
+        <tbody>
           <tr className={Font.tr}>
             <td className={Font.month}>Noviembre</td>
             <td className={Font.count}>600</td>
@@ -22,7 +24,6 @@ export default function ZonaLayout() {
             <td className={Font.count}>600</td>
             <td className={Font.count}>600</td>
           </tr>
-          <br />
           <tr className={Font.tr}>
             <td className={Font.month}>Diciembre</td>
             <td className={Font.count}>700</td>
@@ -30,7 +31,6 @@ export default function ZonaLayout() {
             <td className={Font.count}>700</td>
             <td className={Font.count}>700</td>
           </tr>
-          <br />
           <tr className={Font.tr}>
             <td className={Font.month}>Enero</td>
             <td className={Font.count}>600</td>
@@ -38,8 +38,8 @@ export default function ZonaLayout() {
             <td className={Font.count}>600</td>
             <td className={Font.count}>600</td>
           </tr>
-          <br />
-        </table>
-      </div>
-  )
+        </tbody>
+      </table>
+    </div>
+  );
 }

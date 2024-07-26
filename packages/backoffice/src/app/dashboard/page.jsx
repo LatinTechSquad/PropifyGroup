@@ -1,9 +1,9 @@
-import Dashboard from '@/components/dashboard/DashboardLayout.jsx'
+import Dashboard from './Dashboard.tsx'
 
 export default function Page() {
     return(
         <>
-        <Dashboard></Dashboard>
+        <Dashboard />
         </>
     )
 }
