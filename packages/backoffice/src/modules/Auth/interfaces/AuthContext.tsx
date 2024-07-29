@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
+import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 
 interface AuthContextType {
 	isAuthenticated: boolean;
@@ -9,6 +10,7 @@ interface AuthContextType {
 	isHydrated: boolean;
 	login: (token: string) => void;
 	logout: () => void;
+	getToken: () => string | null;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -19,7 +21,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 	const router = useRouter();
 
 	useEffect(() => {
-		const token = localStorage.getItem('JWtoken');
+		const token = getCookie('JWtoken');
 		if (token) {
 			setIsAuthenticated(true);
 		} else {
@@ -29,29 +31,34 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 	}, []);
 
 	const login = (token: string) => {
-		localStorage.setItem('JWtoken', token);
+		setCookie('JWtoken', token, {
+			secure: process.env.NODE_ENV !== 'development',
+			sameSite: 'strict',
+		});
 		setIsAuthenticated(true);
-		router.push('/dashboard');
 	};
 
 	const logout = () => {
-		localStorage.removeItem('JWtoken');
+		deleteCookie('JWtoken');
 		setIsAuthenticated(false);
 		router.push('/auth/login');
 	};
 
+	const getToken = () => {
+		return getCookie('JWtoken') as string | null;
+	};
+
 	return (
-		<AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, isHydrated, login, logout }}>
+		<AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, isHydrated, login, logout, getToken }}>
 			{children}
 		</AuthContext.Provider>
 	);
 };
 
-export const useAuth = (): AuthContextType => {
+export function useAuth(): AuthContextType {
 	const context = useContext(AuthContext);
-	console.log('AuthContext:', context);
 	if (!context) {
 		throw new Error('useAuth must be used within an AuthProvider');
 	}
 	return context;
-};
+}

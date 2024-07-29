@@ -1,3 +1,5 @@
+import { apiClient } from '@/modules/Shared/infrastructure/apiClient';
+
 interface LoginResponse {
 	success: boolean;
 	message?: string;
@@ -8,7 +10,7 @@ interface LoginResponse {
 
 export const login = async (email: string, password: string): Promise<LoginResponse> => {
 	try {
-		const response = await fetch('https://api.propifygroup.com/api/auth/login', {
+		const response = await apiClient('/auth/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -16,13 +18,7 @@ export const login = async (email: string, password: string): Promise<LoginRespo
 			body: JSON.stringify({ email, password }),
 		});
 
-		if (!response.ok) {
-			const errorData = await response.json();
-			return { success: false, message: errorData.error, data: { token: '' } };
-		}
-
-		const responseData = await response.json();
-		return { success: true, data: responseData.data };
+		return { success: true, data: response.data };
 	} catch (error) {
 		console.error('Error al autenticar usuario:', error);
 		return { success: false, message: 'Error al autenticar usuario', data: { token: '' } };

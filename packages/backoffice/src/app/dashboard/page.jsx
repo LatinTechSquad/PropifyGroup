@@ -2,6 +2,8 @@
 
 import React, { useEffect } from 'react';
 import './dashboard.css';
+import { useAuth } from '@/modules/Auth/interfaces/AuthContext';
+import { useRouter } from 'next/navigation';
 
 import Metrics from '@/components/metrics/MetricsLayout';
 import Chat from '@/components/chat/ChatLayout';
@@ -16,6 +18,18 @@ import Transacciones from '@/components/transacciones/TransaccionesLayout';
 import Usuarios from '@/components/usuarios/UsuariosLayout';
 
 export default function Page() {
+	const { isAuthenticated, isHydrated } = useAuth();
+	const router = useRouter();
+
+	useEffect(() => {
+		if (isHydrated && !isAuthenticated) {
+			router.push('/auth/login');
+		}
+	}, [isHydrated, isAuthenticated, router]);
+
+	if (!isHydrated || !isAuthenticated) {
+		return null;
+	}
 	return (
 		<div className="dashboard">
 			<section className="container-fluid">

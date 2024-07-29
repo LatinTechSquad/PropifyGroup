@@ -1,10 +1,23 @@
-import { NextRequest } from 'next/server';
-import { handleAuthentication } from './src/modules/Auth/interfaces/authLogic';
+import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest) {
-	return handleAuthentication(req);
+    const token = req.cookies.get('JWtoken');
+    const { pathname } = req.nextUrl;
+
+    if (!token && pathname !== '/auth/login') {
+        return NextResponse.redirect(new URL('/auth/login', req.url));
+    }
+	if (token && pathname === '/auth/login') {
+        return NextResponse.redirect(new URL('/dashboard', req.url));
+    }
+
+    if (token && pathname === '/') {
+        return NextResponse.redirect(new URL('/dashboard', req.url));
+    }
+
+    return NextResponse.next();
 }
 
 export const config = {
-	matcher: ['/', '/((?!api|_next|auth/login).*)'],
+    matcher: ['/', '/((?!api|_next|auth/login).*)'],
 };
