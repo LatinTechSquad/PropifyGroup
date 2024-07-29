@@ -8,7 +8,7 @@ interface AuthContextType {
 	isAuthenticated: boolean;
 	setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
 	isHydrated: boolean;
-	login: (token: string) => void;
+	performLogin: (token: string) => void;
 	logout: () => void;
 	getToken: () => string | null;
 }
@@ -30,7 +30,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 		setIsHydrated(true);
 	}, []);
 
-	const login = (token: string) => {
+	const performLogin = (token: string) => {
 		setCookie('JWtoken', token, {
 			secure: process.env.NODE_ENV !== 'development',
 			sameSite: 'strict',
@@ -49,7 +49,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 	};
 
 	return (
-		<AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, isHydrated, login, logout, getToken }}>
+		<AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, isHydrated, performLogin, logout, getToken }}>
 			{children}
 		</AuthContext.Provider>
 	);

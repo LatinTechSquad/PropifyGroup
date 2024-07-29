@@ -6,10 +6,9 @@ import SideBarLayout from '@/components/sidebar/SideBarLayout';
 
 interface RootLayoutContentProps {
 	children: React.ReactNode;
-	showSidebar: boolean;
 }
 
-const RootLayoutContent: React.FC<RootLayoutContentProps> = ({ children, showSidebar }) => {
+const RootLayoutContent: React.FC<RootLayoutContentProps> = ({ children }) => {
 	const { isHydrated, isAuthenticated } = useAuth();
 
 	if (!isHydrated) {
@@ -18,7 +17,7 @@ const RootLayoutContent: React.FC<RootLayoutContentProps> = ({ children, showSid
 
 	return (
 		<div className="app-container">
-			{showSidebar && isAuthenticated && <SideBarLayout />}
+			{isAuthenticated && <SideBarLayout />}
 			<main className="content">{children}</main>
 		</div>
 	);

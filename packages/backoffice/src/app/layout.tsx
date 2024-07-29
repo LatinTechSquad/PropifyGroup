@@ -10,15 +10,14 @@ const nunito = Nunito({
 
 interface RootLayoutProps {
 	children: React.ReactNode;
-	showSidebar?: boolean;
 }
 
-export default function RootLayout({ children, showSidebar = true }: RootLayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html lang="en" className={`${nunito.variable}`}>
 			<body>
 				<AuthProvider>
-					<RootLayoutContent showSidebar={showSidebar}>{children}</RootLayoutContent>
+					<RootLayoutContent>{children}</RootLayoutContent>
 				</AuthProvider>
 			</body>
 		</html>

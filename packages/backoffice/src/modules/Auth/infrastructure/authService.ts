@@ -8,7 +8,7 @@ interface LoginResponse {
 	};
 }
 
-export const login = async (email: string, password: string): Promise<LoginResponse> => {
+export const authenticateUser = async (email: string, password: string): Promise<LoginResponse> => {
 	try {
 		const response = await apiClient('/auth/login', {
 			method: 'POST',
