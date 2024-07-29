@@ -3,8 +3,8 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import InputText from '@/components/form/InputText';
-import SubmitButton from '@/components/form/SubmitButton';
+import InputText from '@/components/ui/InputText';
+import SubmitButton from '@/components/ui/SubmitButton';
 
 type FormData = {
 	id: string;

@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useAuth } from '@/modules/Auth/interfaces/AuthContext';
+import { useAuth } from '@/app/AuthContext';
 import { useRouter } from 'next/navigation';
-import LoginForm from './LoginForm';
+import LoginForm from './components/LoginForm';
 
 const Login = () => {
   const { isAuthenticated, isHydrated } = useAuth();

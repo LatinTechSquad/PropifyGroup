@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { useAuth } from '@/modules/Auth/interfaces/AuthContext';
-import SideBarLayout from '@/components/sidebar/SideBarLayout';
+import { useAuth } from '@/app/AuthContext';
+import SideBarLayout from '@/components/layout/sidebar/SideBarLayout';
 
 interface RootLayoutContentProps {
 	children: React.ReactNode;
