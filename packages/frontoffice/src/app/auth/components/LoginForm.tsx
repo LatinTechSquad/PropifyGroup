@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import InputText from '@/components/form/InputText';
-import SubmitButton from '@/components/form/SubmitButton';
-import SocialLoginButton from '@/components/form/SocialLoginButton';
+import InputText from '@/components/ui/InputText';
+import SubmitButton from '@/components/ui/SubmitButton';
+import SocialLoginButton from '@/components/ui/SocialLoginButton';
 import { BiLogoGoogle } from 'react-icons/bi';
 import { BiLogoFacebookCircle } from 'react-icons/bi';
 

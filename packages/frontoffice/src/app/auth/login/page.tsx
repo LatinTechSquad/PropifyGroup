@@ -1,4 +1,4 @@
-import LoginForm from "@/components/auth/LoginForm"
+import LoginForm from "@/app/auth/components/LoginForm"
 
 const Login = () => {
     return <div className="flex justify-center py-16">
