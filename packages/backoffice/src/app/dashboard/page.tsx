@@ -5,8 +5,8 @@ import './dashboard.css';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 
-import Metrics from '@/app/dashboard/components/metrics/MetricsLayout';
-import Chat from '@/app/dashboard/components/chat/Chat';
+import Metrics from '@/app/dashboard/components/metrics/metrics';
+import Chat from '@/app/dashboard/components/chat/chat';
 import Rate from '@/app/dashboard/components/rate/rate';
 import Commune from '@/app/dashboard/components/commune/commune';
 import Income from '@/app/dashboard/components/income/income';

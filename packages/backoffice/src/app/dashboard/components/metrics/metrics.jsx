@@ -2,7 +2,7 @@
 import React from 'react'
 import './metrics.css'
 
-export default function MetricsLayout() {
+export default function Metrics() {
     return (
     
         <div className="metrics-component card shadow-lg">
