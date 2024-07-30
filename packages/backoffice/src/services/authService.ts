@@ -1,4 +1,4 @@
-import { apiClient } from '@/app/apiClient';
+import { apiClient } from '@/utils/apiClient';
 
 interface LoginResponse {
 	success: boolean;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../../../AuthContext';
-import { authenticateUser } from '../../services/authService';
+import { useAuth } from '../contexts/AuthContext';
+import { authenticateUser } from '../services/authService';
 
 interface UseLoginReturnType {
   errorMessage: string;

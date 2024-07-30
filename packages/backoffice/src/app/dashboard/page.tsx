@@ -2,11 +2,11 @@
 
 import React, { useEffect } from 'react';
 import './dashboard.css';
-import { useAuth } from '@/app/AuthContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 
 import Metrics from '@/app/dashboard/components/metrics/MetricsLayout';
-import Chat from '@/app/dashboard/components/chat/ChatLayout';
+import Chat from '@/app/dashboard/components/chat/Chat';
 import Rate from '@/app/dashboard/components/rate/rate';
 import Commune from '@/app/dashboard/components/commune/commune';
 import Income from '@/app/dashboard/components/income/income';
