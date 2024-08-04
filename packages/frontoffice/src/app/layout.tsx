@@ -1,7 +1,8 @@
 'use client';
 import { Nunito } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/navbar/Navbar';
+import Navbar from '@/components/layout/Navbar/Navbar';
+import Footer from '@/components/layout/Footer/Footer';
 
 const nunito = Nunito({
 	subsets: ['latin'],
@@ -24,8 +25,16 @@ const RootLayout = ({ children }: RootLayoutProps) => {
 	return (
 		<html lang="en" className={`${nunito.variable}`}>
 			<body>
-				<Navbar links={LINKS} />
-				{children}
+				<div className="border-l-[24px] border-r-[24px] border-[#4A5271]">
+					<div className="border-t-[24px] border-b-[12px] border-[#4A5271]">
+						<Navbar links={LINKS} />
+					</div>
+
+					{children}
+					<div className="border-t-[12px] border-b-[24px] border-[#4A5271]">
+						<Footer />
+					</div>
+				</div>
 			</body>
 		</html>
 	);
