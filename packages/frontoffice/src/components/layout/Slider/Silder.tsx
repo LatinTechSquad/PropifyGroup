@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 
 const slides = [
 	'/slider/slide0.png',
@@ -38,13 +39,13 @@ const Slider = () => {
 				onClick={goToPrevious}
 				className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full z-10"
 			>
-				0
+				<FaAngleLeft />
 			</button>
 			<button
 				onClick={goToNext}
 				className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full z-10"
 			>
-				0
+				<FaAngleRight />
 			</button>
 		</div>
 	);
