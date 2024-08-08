@@ -33,7 +33,7 @@ const Slider = () => {
 	return (
 		<div className="relative w-full h-[50vh] overflow-hidden">
 			<div className="absolute inset-0">
-				<Image src={slides[currentIndex]} layout="fill" objectFit="cover" alt={`Slide ${currentIndex + 1}`} priority />
+				<Image src={slides[currentIndex]} fill={true} alt={`Slide ${currentIndex + 1}`} priority />
 			</div>
 			<button
 				onClick={goToPrevious}
