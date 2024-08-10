@@ -1,31 +1,87 @@
 'use client'
-import React from 'react'
-import Style from './percentage.module.css'
-import Image from 'next/image'
-import graph2 from '@/assets/icons/Group24.png'
+import { Card, CategoryBar, SparkBarChart, Text, Title } from '@tremor/react';
 
-export default function Percentage() {
+
+const chartdata = [
+  {
+    month: 'Jan',
+    day: '21',
+    Performance: 4000,
+    Benchmark: 3000,
+  },
+  {
+    month: 'Feb',
+    day: '21',
+    Performance: 3000,
+    Benchmark: 2000,
+  },
+  {
+    month: 'Mar',
+    day: '21',
+    Performance: 2000,
+    Benchmark: 1700,
+  },
+  {
+    month: 'Apr',
+    day: '21',
+    Performance: 2780,
+    Benchmark: 2500,
+  },
+  {
+    month: 'May',
+    day: '21',
+    Performance: 1890,
+    Benchmark: 1890,
+  },
+  {
+    month: 'Jun',
+    day: '21',
+    Performance: 2390,
+    Benchmark: 2000,
+  },
+  {
+    month: 'Jul',
+    day: '21',
+    Performance: 3490,
+    Benchmark: 3000,
+  },
+];
+
+export default function percentage () {
+
+
   return (
-    <div className={Style.porce}>
-      <p className={Style.title}>Porsentaje de ocupación (Nov - Feb)</p>
-
-      <div className={Style.porceBody}>
-
-        <div className={Style.porceText}>
-          <p className={Style.porceTotal}>10 k</p>
-          <small>Total ocupados</small>
+    <>
+      <Card className="w-full flex flex-col align-center flex-wrap justify-center gap-12"
+      decoration="top">
+        <Title>Porcentaje de ocupación ( - )</Title>
+        <div className='flex justify-center align-center gap-12'>
+          <div>
+            <Text className='text-tremor-content-strong dark:text-dark-tremor-content-strong font-medium'>10K</Text>
+            <Text className='text-tremor-content-strong dark:text-dark-tremor-content-strong font-medium'>Total de Ocupación</Text>
+          </div>
+          <SparkBarChart
+            data={chartdata}
+            index="date"
+            categories={['Performance', 'Benchmark']}
+            colors={['yellow', 'blue']}
+          />
         </div>
-
-        <div className={Style.porceGaph}>
-          <Image src={graph2} alt=''></Image>
+        <div className="space-y-3">
+          <p className="text-center font-mono text-sm text-slate-500">
+            Ultima actualización : 
+          </p>
+          <div className="flex justify-center">
+            <Card className="max-w-sm">
+              <CategoryBar
+                values={[40, 30, 20, 10]}
+                colors={['emerald', 'yellow', 'orange', 'rose']}
+                markerValue={62}
+              />
+            </Card>
+          </div>
         </div>
-
-      </div>
-      <div className={Style.porceStats}>
-        <small>Última actualización ayer</small>
-        <small>Subió 60%</small>
-      </div>
-
-    </div>
-  )
-}
+      </Card>
+    </>
+  );
+};

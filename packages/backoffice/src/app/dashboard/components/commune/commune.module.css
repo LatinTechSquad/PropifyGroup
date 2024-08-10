@@ -1,17 +1,40 @@
-.comunas {
+.component{
+    border: 1px rgba(149, 146, 146, 0.5) solid;
+    /* background-color: var(--color-fondo); */
+    border-radius: 5px;
+    padding: 5%;
+    box-shadow: 0px 0px 10px darkgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: start;
+    z-index: 3;
+}
+.text {
+    text-align: center;
+    margin-top: 4%;
+}
+.comunas{
+    
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
 }
-.comunas-map {
+.comunasMap {
     width: 360px;
     height: 360px;
+    margin: 4%;
 }
-.comunas-list {
+.comunasList {
     display: flex;
     flex-direction: row;
     align-items: baseline;
     justify-content: space-around;
     padding-right: 4px;
+}
+.barriosList {
+    list-style: none;
+    color: black;
+    margin: 10px 0;
 }
