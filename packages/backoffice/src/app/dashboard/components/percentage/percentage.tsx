@@ -1,5 +1,5 @@
 'use client'
-import { Card, CategoryBar, SparkBarChart, Text, Title } from '@tremor/react';
+import { Card, CategoryBar, SparkAreaChart, SparkBarChart, SparkLineChart, Text, Title } from '@tremor/react';
 
 
 const chartdata = [
@@ -47,7 +47,7 @@ const chartdata = [
   },
 ];
 
-export default function percentage () {
+export default function Percentage ()  {
 
 
   return (

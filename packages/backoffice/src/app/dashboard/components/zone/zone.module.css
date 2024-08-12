@@ -1,4 +1,6 @@
 .table{
+    width: 100%;
+    height: 100%;
     border: 1px rgba(149, 146, 146, 0.5) solid;
     background-color: var(--color-fondo);
     border-radius: 5px;
@@ -7,6 +9,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    justify-content: space-evenly;
     text-align: center;
     z-index: 3;
 }

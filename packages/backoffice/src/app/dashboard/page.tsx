@@ -1,22 +1,28 @@
-'use client';
-import '@tremor/react' 
-import './dashboard.css';
+'use client'
+import {
+  Card,
+  Tab,
+  TabGroup,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Title
+} from '@tremor/react';
 import React, { useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 
-import {Metrics} from '@/app/dashboard/components/metrics/metrics';
+
+import Dashboard from './components/dashboard/Dashboard';
+import  Zone  from './components/zone/zone'
+import  Rate  from '@/app/dashboard/components/rate/Rate'
+import  Percentage  from '@/app/dashboard/components/percentage/percentage';
+import  Metrics  from '@/app/dashboard/components/metrics/metrics';
+import Comune from '@/app/dashboard/components/commune/commune';
 import Chat from '@/app/dashboard/components/chat/chat';
-import Rate from '@/app/dashboard/components/rate/Rate';
-import Commune from '@/app/dashboard/components/commune/commune';
-import Income from '@/app/dashboard/components/income/income';
 import Payments from '@/app/dashboard/components/payments/payments';
-import Percentage from '@/app/dashboard/components/percentage/percentage';
 import Recent from '@/app/dashboard/components/recent/recent';
-import Transactions from './components/transactions/transactions';
-import Users from './components/users/users';
-import Zone from '@/app/dashboard/components/zone/zone';
-import { Card } from '@tremor/react';
+
 
 export default function Page() {
   const { isAuthenticated, isHydrated } = useAuth();
@@ -32,69 +38,69 @@ export default function Page() {
     return null;
   }
   return (
-    <div className='dashboard'>
-      <section className='container-fluid'>
-        <h2 className='h2'>Dashboard</h2>
-        <article className='stats row'>
-          <div className='col-6 p-1'>
-            <Zone />
-          </div>
+    <div className="bg-slate-200 w-full p-6 sm:p-10">
+        <Title>Dashboard</Title>
 
-          <div className='col-3 p-1'>
-            <Rate />
-          </div>
+        <TabGroup>
+            <TabList defaultValue={0} variant="solid">
 
-          <div className='col-3 p-1'>
-            <Percentage />
-          </div>
-        </article>
+                <Tab value={0}>Vista General</Tab>
+                <Tab value={1}>Ocupación por zona</Tab>
+                <Tab value={2}>Taza de conversión</Tab>
+                <Tab value={3}>Ocupación</Tab>
+                <Tab value={4}>Metricas</Tab>
+                <Tab value={5}>Valores por Comuna</Tab>
+                <Tab value={6}>Mensajes</Tab>
+                <Tab value={7}>Metodos de pagos</Tab>
+            </TabList>
+            <TabPanels>
+                <TabPanel>
+                    <Card>
+                        <Dashboard />
+                    </Card>
+                </TabPanel>
+                <TabPanel>
+                    <Card>
+                        <Zone />
+                    </Card>
+                </TabPanel>
+                <TabPanel>
+                    <Card>
+                        <Rate />
+                    </Card>
+                </TabPanel>
+                <TabPanel>
+                    <Card>
+                        <Percentage />
+                    </Card>
+                </TabPanel>
+                <TabPanel>
+                    <Card className='grid grid-cols-4 gap-2'>
+                       <Metrics titleOut={'Total de Propiedades Listadas'} dataTitle1={'Deptos.'} data1={'50'} dataTitle2={'Casa'} data2={'44'} dataTitle3={'Proyectos'} data3={'10'}/>
+                       <Metrics titleOut={'Ingresos Totales'} dataTitle1={'Compras'} data1={'$5,4 Mill'} dataTitle2={'Ventas'} data2={'$17.4 Mill'} dataTitle3={'Alquileres'} data3={'$10.3 Mill'} />
+                       <Metrics titleOut={'Total de Transacciones Realizadas'} dataTitle1={'Comprass'} data1={'50'} dataTitle2={'Ventas'} data2={'44'} dataTitle3={'Alquileres'} data3={'10'} />
+                       <Metrics titleOut={'Total de Usuarios Activos'} dataTitle1={'Compradores'} data1={'50'} dataTitle2={'Vendedores'} data2={'44'} dataTitle3={'Inmobiliarias'} data3={'10'} />
+                    </Card>
+                   </TabPanel>
+                <TabPanel>
+                    <Card>
+                        <Comune />
+                    </Card>
+                </TabPanel>
+                <TabPanel>
+                    <Card>
+                        <Chat />
+                    </Card>
+                </TabPanel>
+                <TabPanel>
+                    <Card className='flex flex-row gap-2'>
+                        <Payments />
+                        <Recent />
+                    </Card>
+                </TabPanel>
+            </TabPanels>
+        </TabGroup>
 
-        <article className="metrics row">
-                <Card className='grid grid-cols-4 gap-2'>
-                            <Metrics titleOut={'Total de Propiedades Listadas'}
-                            dataTitle1='Deptos.'
-                            data1='50'
-                            dataTitle2='Casa'
-                            data2='44'
-                            dataTitle3='Proyectos'
-                            data3='10' />
-                             <Metrics titleOut={'Ingresos Totales'}
-                            dataTitle1='Compras'
-                            data1='$5.4 Mill'
-                            dataTitle2='Ventas'
-                            data2='$ 17.2 Mill'
-                            dataTitle3='Alquileres'
-                            data3='$10.3 Mill' />
-                            <Metrics titleOut={'Total de Transacciones Realizadas'}
-                            dataTitle1='Compras'
-                            data1='50'
-                            dataTitle2='Ventas'
-                            data2='44'
-                            dataTitle3='Alquileres'
-                            data3='10' />
-                           <Metrics titleOut={'Total de Usuarios Activos'}
-                            dataTitle1='Compradores'
-                            data1='50'
-                            dataTitle2='Vendedores'
-                            data2='44'
-                            dataTitle3='Inmobiliaria'
-                            data3='10' />
-                        </Card>
-                </article>
-
-        <article className='row pagos'>
-          <div className='col-6 p-1'>
-            <Commune />
-          </div>
-          <div className='col-3 p-1'>
-            <Chat />
-          </div>
-          <div className='col-3 p-1 d-flex flex-column align-items-stretch justify-content-stretch'>
-            <Payments />
-            <Recent />
-          </div>
-        </article>
-      </section>
     </div>
-  );
+)
 }

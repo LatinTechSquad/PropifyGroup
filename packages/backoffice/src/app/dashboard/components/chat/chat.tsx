@@ -2,10 +2,11 @@ import React from 'react';
 import './chat.css';
 import Image from 'next/image';
 import group from '@/assets/icons/icon-group.png';
+import { Card } from '@tremor/react';
 
 export default function Chat() {
 	return (
-		<div className=" card shadow-lg h-100 z-3">
+		<Card className=" card shadow-lg h-100 z-3" decoration="top"decorationColor="indigo">
 			<h6 className="m-3">Mensajes recientes</h6>
 			<div className="chart">
 				<h6 className="">Sopote Técnico</h6>
@@ -86,6 +87,6 @@ export default function Chat() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Card>
 	);
 }
