@@ -6,7 +6,7 @@ import { Card } from '@tremor/react';
 
 export default function Chat() {
 	return (
-		<Card className=" card shadow-lg h-100 z-3" decoration="top"decorationColor="indigo">
+		<Card className=" shadow-lg h-100 z-3" decoration="top"decorationColor="indigo">
 			<h6 className="m-3">Mensajes recientes</h6>
 			<div className="chart">
 				<h6 className="">Sopote Técnico</h6>

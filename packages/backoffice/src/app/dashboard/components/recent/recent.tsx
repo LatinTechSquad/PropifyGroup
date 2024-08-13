@@ -4,38 +4,49 @@ import Style from './recientes.module.css'
 import {Card, List, ListItem} from '@tremor/react'
 
 export default function Recent() {
+    const transaction = [
+        {
+            date:'Fecha',
+            hour:'Hora',
+            type:'Tipo',
+            owner:'Propiedad',
+            states:'Estado'
+        },
+        {
+            date:'20/03/2024',
+            hour:'8:45',
+            type:'in time',
+            owner:'Mono',
+            states:'Error'
+        },
+        {
+            date:'20/03/2024',
+            hour:'9:15',
+            type:'A def.',
+            owner:'2 amb.',
+            states:'in progress'
+        },
+        {
+            date:'20/03/2024',
+            hour:'8:45',
+            type:'A def.',
+            owner:'Casa',
+            states:'Fullfiled'
+        },
+    ]
     return (
         <Card className='h-full' decoration="top" decorationColor="indigo">
             <h6 className="mt-4 text-center">Transacciones recientes</h6>
             <List>
-                <ListItem>
-                    <span>Fecha</span>
-                    <span>Hora</span>
-                    <span>Tipo</span>
-                    <span>Propiedad</span>
-                    <span>Estado</span>
-                </ListItem>
-                <ListItem>
-                    <span>20/03/2024</span>
-                    <span>8:45</span>
-                    <span>A tie.</span>
-                    <span>Mono.</span>
-                    <span className={Style.textDanger}>Error</span>
-                </ListItem>
-                <ListItem>
-                    <span>20/03/2024</span>
-                    <span>9:15</span>
-                    <span>A def.</span>
-                    <span>2 amb.</span>
-                    <span className={Style.textWarning}>En proceso</span>
-                </ListItem>
-                <ListItem>
-                    <span>20/03/2024</span>
-                    <span>8:45</span>
-                    <span>A def.</span>
-                    <span>Casa</span>
-                    <span className={Style.textCorrect}>Finalizada</span>
-                </ListItem>
+                {transaction.map((item) => (
+                    <ListItem className='grid grid-cols-5 gap-5' key={item.date}>
+                      <p>{item.date}</p>              
+                      <p>{item.hour}</p>              
+                      <p>{item.type}</p>              
+                      <p>{item.owner}</p>              
+                      <p>{item.states}</p>              
+                    </ListItem>
+                ))}
             </List>            
         </Card>
     )

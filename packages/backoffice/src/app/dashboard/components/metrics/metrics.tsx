@@ -1,7 +1,7 @@
 'use client'
 import { Card, Text, Title } from '@tremor/react';
 
-export function Metrics({titleOut,dataTitle1, data1,dataTitle2, data2,dataTitle3, data3}) {
+export default function Metrics({titleOut,dataTitle1, data1,dataTitle2, data2,dataTitle3, data3} : any) {
   
   return (
     <Card className="mx-auto w-full shadow-lg" decoration="top" decorationColor="indigo">

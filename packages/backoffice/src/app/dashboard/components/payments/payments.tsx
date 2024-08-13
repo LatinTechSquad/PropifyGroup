@@ -9,7 +9,7 @@ import { Card } from '@tremor/react'
 
 export default function Payments() {
     return (
-        <Card className="card shadow-lg z-3" decoration="top" decorationColor="indigo">
+        <Card className=" shadow-lg z-3" decoration="top" decorationColor="indigo">
             <h6 className="mt-4 text-center">Metodos de pago utilizados</h6>
     
             <ul className="text-dark">

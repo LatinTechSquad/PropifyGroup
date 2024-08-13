@@ -3,7 +3,6 @@
 import React from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import Sidebar from '@/components/layout/sidebar/sidebar';
-
 interface RootLayoutContentProps {
 	children: React.ReactNode;
 }

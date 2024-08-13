@@ -22,6 +22,7 @@ import Comune from '@/app/dashboard/components/commune/commune';
 import Chat from '@/app/dashboard/components/chat/chat';
 import Payments from '@/app/dashboard/components/payments/payments';
 import Recent from '@/app/dashboard/components/recent/recent';
+import Footer from '@/components/layout/footer/Footer';
 
 
 export default function Page() {
@@ -38,6 +39,7 @@ export default function Page() {
     return null;
   }
   return (
+   <>
     <div className="bg-slate-200 w-full p-6 sm:p-10">
         <Title>Dashboard</Title>
 
@@ -102,5 +104,8 @@ export default function Page() {
         </TabGroup>
 
     </div>
+    <Footer/>
+    
+    </>
 )
 }

@@ -33,20 +33,20 @@ export default function Dashboard() {
                 <Card className='grid grid-cols-4 gap-2'>
                 <Metrics titleOut={'Total de Propiedades Listadas'} dataTitle1={'Deptos.'} data1={'50'} dataTitle2={'Casa'} data2={'44'} dataTitle3={'Proyectos'} data3={'10'} />
                 <Metrics titleOut={'Ingresos Totales'} dataTitle1={'Compras'} data1={'$5,4 Mill'} dataTitle2={'Ventas'} data2={'$17.4 Mill'} dataTitle3={'Alquileres'} data3={'$10.3 Mill'} />
-                <Metrics titleOut={'Total de Transacciones Realizadas'} dataTitle1={'Comprass'} data1={'50'} dataTitle2={'Ventas'} data2={'44'} dataTitle3={'Alquileres'} data3={'10'} />
-                <Metrics titleOut={'Total de Usuarios Activos'} dataTitle1={'Compradores'} data1={'50'} dataTitle2={'Vendedores'} data2={'44'} dataTitle3={'Inmobiliarias'} data3={'10'} />
+                <Metrics titleOut={'Total de Transacciones Realizadas'} dataTitle1={'Compras'} data1={'50'} dataTitle2={'Ventas'} data2={'44'} dataTitle3={'Alquileres'} data3={'10'} />
+                <Metrics titleOut={'Total de Usuarios Activos'} dataTitle1={'Comprador'} data1={'50'} dataTitle2={'Vendedor'} data2={'44'} dataTitle3={'Inmobiliarias'} data3={'10'} />
                 </Card>
               </article>
               
     
-              <article className='row'>
+              <article className='row d-flex flex-row align-items-stretch'>
               <div className='col-6 p-1'>
                 <Commune />
               </div>
               <div className='col-3 p-1'>
                 <Chat />
               </div>
-              <div className="col-3 p-1 flex flex-col align-stretch justify-stretch">
+              <div className="col-3 gap-2 flex flex-col align-stretch justify-stretch">
                 <Payments />
                 <Recent />
               </div>

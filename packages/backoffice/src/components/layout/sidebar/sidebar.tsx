@@ -3,7 +3,6 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import './sidebar.css';
-
 import icon1 from '@/assets/icons/menu_sidebar.png';
 import stats from '@/assets/icons/stats.png';
 import people from '@/assets/icons/people.png';
@@ -23,6 +22,7 @@ export default function Sidebar() {
 	};
 
 	return (
+
 		<aside className="sidebar">
 			<nav className="sidebar__nav">
 				<ul className="sidebar__list">
@@ -76,5 +76,7 @@ export default function Sidebar() {
 				</ul>
 			</div>
 		</aside>
+	
 	);
+
 }
