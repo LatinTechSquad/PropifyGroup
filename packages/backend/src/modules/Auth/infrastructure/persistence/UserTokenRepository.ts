@@ -1,4 +1,4 @@
-import { PrismaClient, userToken } from '@prisma/client';
+import { PrismaClient, UserToken } from '@prisma/client';
 import { IUserTokenRepository } from '../../domain/IUserTokenRepository';
 
 export class UserTokenRepository implements IUserTokenRepository {
@@ -21,7 +21,7 @@ export class UserTokenRepository implements IUserTokenRepository {
     });
   }
 
-  public async getToken(token: string): Promise<userToken | null> {
+  public async getToken(token: string): Promise<UserToken | null> {
     return await this.prisma.userToken.findUnique({
       where: { token },
     });
