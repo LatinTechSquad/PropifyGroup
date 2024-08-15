@@ -1,27 +1,47 @@
-'use client';
-import React from 'react';
-import Image from 'next/image';
-import graph from '@/assets/icons/Grafica.png';
-import Style from './rate.module.css';
+'use client'
+import { Card, DonutChart, Legend, Title } from '@tremor/react';
+
+const sales = [
+  {
+    name: 'Departamentos',
+    sales: 680,
+  },
+  {
+    name: 'Casas',
+    sales: 590,
+  },
+  {
+    name: 'Duplex',
+    sales: 230,
+  }
+];
+
+const valueFormatter = (number: number) =>
+  `${Intl.NumberFormat('us').format(number).toString()}`;
 
 export default function Rate() {
   return (
-    <div className={Style.taza}>
-      <p className={Style.title}>Taza de conversión de propiedades</p>
+    <>
+      <Card className='h-full shadow-lg p-4 w-full'
+      decoration="top">
+      <Title className="text-tremor-content-strong dark:text-dark-tremor-content-strong font-medium">Taza de conversión de propiedades</Title>
+        <div className="flex items-center justify-center space-x-6">
 
-      <div className={Style.body}>
-        <div>
-          <ul className={Style.list}>
-            <li className={Style.listItem}>Departamentos</li>
-            <li className={Style.listItem}>Casa</li>
-            <li className={Style.listItem}>Duplex</li>
-          </ul>
-        </div>
-
-        <div className='taza-graph'>
-          <Image src={graph} alt='' width={100}></Image>
-        </div>
-      </div>
-    </div>
+        <DonutChart
+          data={sales}
+          category="sales"
+          index="name"
+          valueFormatter={valueFormatter}
+          colors={['yellow', 'blue', 'gray']}
+          className="w-40"
+          />
+        <Legend
+          categories={['Departamentos','Casa','Duplex']}
+          colors={['yellow', 'blue', 'gray']}
+          className="max-w-xs"
+          />
+          </div>
+      </Card>
+    </>
   );
 }

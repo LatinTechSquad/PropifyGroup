@@ -1,8 +1,9 @@
 import { Nunito } from 'next/font/google';
+import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/globals.css';
 import RootLayoutContent from '../components/layout/RootLayoutContent';
 import { AuthProvider } from '@/contexts/AuthContext';
-
+import '@tremor/react'
 const nunito = Nunito({
 	subsets: ['latin'],
 	variable: '--font-nunito',
