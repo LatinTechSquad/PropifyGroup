@@ -1,7 +1,7 @@
 'use client'
 import { Card } from '@tremor/react'; 
-import  Zone  from '@/app/dashboard/components/zone/zone'
-import  Rate  from '@/app/dashboard/components/rate/Rate'
+import  Zone  from '@/app/dashboard/components/zone/zone';
+import  Rate  from '@/app/dashboard/components/rate/rate';
 import  Percentage  from '@/app/dashboard/components/percentage/percentage';
 import  Metrics  from '@/app/dashboard/components/metrics/metrics';
 import Commune from '@/app/dashboard/components/commune/commune';

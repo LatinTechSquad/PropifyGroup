@@ -15,14 +15,14 @@ import { useRouter } from 'next/navigation';
 
 import Dashboard from './components/dashboard/Dashboard';
 import  Zone  from './components/zone/zone'
-import  Rate  from '@/app/dashboard/components/rate/Rate'
+import  Rate  from '@/app/dashboard/components/rate/rate'
 import  Percentage  from '@/app/dashboard/components/percentage/percentage';
 import  Metrics  from '@/app/dashboard/components/metrics/metrics';
 import Comune from '@/app/dashboard/components/commune/commune';
 import Chat from '@/app/dashboard/components/chat/chat';
 import Payments from '@/app/dashboard/components/payments/payments';
 import Recent from '@/app/dashboard/components/recent/recent';
-import Footer from '@/components/layout/footer/Footer';
+import Footer from '@/components/layout/footer/footer';
 
 
 export default function Page() {
