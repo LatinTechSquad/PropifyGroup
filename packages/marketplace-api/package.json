@@ -2,21 +2,21 @@
   "name": "marketplace-api",
   "version": "1.0.0",
   "description": "Este proyecto tiene como objetivo desarrollar un sitio web destinado a evaluar opciones de compra, venta y alquiler de inmuebles en Latinoamérica, bajo el nombre de \"Inmobiliaria Bonpland\". La plataforma busca proporcionar a los usuarios un listado detallado de propiedades, permitiéndoles filtrar y encontrar el inmueble deseado. Además, se enfoca en facilitar el contacto con la inmobiliaria a través de referencias específicas.",
-  "main": "index.js",
+  "main": "dist/src/app/start.js",
   "scripts": {
     "build": "tsc && npm run prisma:build",
-    "prisma:build": "cd dist/src/modules/Shared/infrastructure/persistence && npx prisma generate",
+    "prisma:build": "npx prisma generate",
     "start": "node dist/src/app/start.js",
     "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/app/start.ts",
     "test": "npm run test:unit && npm run test:features",
     "test:features": "NODE_ENV=test cucumber-js -p Backend",
     "test:unit": "NODE_ENV=test jest --verbose --runInBand --detectOpenHandles",
-    "prisma:generate": "cd src/modules/Shared/infrastructure/persistence && npx prisma generate",
-    "prisma:push": "cd src/modules/Shared/infrastructure/persistence && npx prisma db push",
-    "lint": "eslint src/**/*.ts",
-    "format": "eslint src/**/*.ts --fix",
+    "prisma:generate": "npx prisma generate",
+    "prisma:push": "npx prisma db push",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
     "swagger": "ts-node swagger.ts",
-    "prepare": "husky"
+    "prepare": "cd ../.. && husky install packages/marketplace-api/.husky"
   },
   "prisma": {
     "schema": "src/modules/Shared/infrastructure/persistence/prisma/schema.prisma"
@@ -71,8 +71,12 @@
     "typescript": "^5.3.3"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "npm run lint"
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
     ]
+  },
+  "engines": {
+    "node": ">=21.6.2"
   }
 }
