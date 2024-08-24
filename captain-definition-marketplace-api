@@ -4,7 +4,7 @@
     "FROM node:21.6.2-alpine",
     "WORKDIR /usr/src/app",
     "COPY packages/marketplace-api/package*.json ./",
-    "RUN npm ci && npm prune --production",
+    "RUN npm install --omit=dev && npm prune --production",
     "COPY packages/marketplace-api/ ./",
     "RUN npm run build",
     "ENV NODE_ENV=production",
@@ -14,3 +14,4 @@
     "CMD [ \"npm\", \"start\" ]"
   ]
 }
+
