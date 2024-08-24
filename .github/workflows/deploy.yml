@@ -1,0 +1,19 @@
+name: Deploy to CapRover
+
+on:
+  push:
+    branches:
+      - Testing 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Trigger CapRover Webhook
+      run: |
+        curl -X POST "${{ secrets.https://captain.propifygroup.com/api/v2/user/apps/webhooks/triggerbuild?namespace=captain&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InRva2VuVmVyc2lvbiI6Ijg2MTc2MTMwLWE1MWYtNGZkMC05NmI2LTcxY2ZhYTVmMGFhNiIsImFwcE5hbWUiOiJhcGkiLCJuYW1lc3BhY2UiOiJjYXB0YWluIn0sImlhdCI6MTcyMDA0NTgwOX0.Zl2AwenSjU6CutgAhZ5pC5S_FnbaAd3j3NFnts1LEDc }}"
+

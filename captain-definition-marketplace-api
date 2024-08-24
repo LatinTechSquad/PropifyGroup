@@ -3,7 +3,7 @@
 "dockerfileLines": [
 "FROM node:21.6.2",
 "WORKDIR /usr/src/app",
-"COPY ./packages/backend/ /usr/src/app/",
+"COPY ./packages/marketplace-api/ /usr/src/app/",
 "RUN npm install && npm cache clean --force",
 "ENV NODE_ENV production",
 "ENV PORT 80",
