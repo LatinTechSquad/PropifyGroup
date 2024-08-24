@@ -11,7 +11,7 @@ import { RoleIdNotExistError } from '../../domain/errors/RoleIdNotExistError';
 import { UpdateRoleValidator } from '../../application/update/UpdateRoleValidator';
 import { DeleteRoleValidator } from '../../application/delete/DeleteRoleValidator';
 import { GetRoleByIdValidator } from '../../application/getById/GetRoleByIdValidator';
-import { authMiddleware } from '../../../../modules/Auth/infrastructure/api/AuthMiddleware';
+import { authMiddleware } from '../../../Auth/infrastructure/api/AuthMiddleware';
 
 const router = Router();
 

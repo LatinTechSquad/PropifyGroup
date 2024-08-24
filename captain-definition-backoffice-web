@@ -3,7 +3,7 @@
 "dockerfileLines": [
 "FROM node:21.6.2",
 "WORKDIR /usr/src/app",
-"COPY ./packages/frontoffice/ /usr/src/app/",
+"COPY ./packages/backoffice-web/ /usr/src/app/",
 "RUN npm install && npm cache clean --force",
 "RUN npm run build",
 "ENV NODE_ENV production",

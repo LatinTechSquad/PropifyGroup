@@ -1,5 +1,9 @@
 {
   "include": ["src/**/*.ts", ".eslintrc.js", "swagger.ts"],
+  "exclude": [
+    "node_modules",
+    "src/modules/message",
+  ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
