@@ -3,13 +3,12 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const API_BASE_URL = process.env.NODE_ENV === 'production'
-  ? process.env.REMOTE_API_BASE_URL || 'https://api.propifygroup.com/v1'
-  : process.env.LOCAL_API_BASE_URL || 'http://localhost:3002/v1';
+const API_BASE_URL =
+  process.env.NODE_ENV === 'production' ? process.env.REMOTE_API_BASE_URL : process.env.LOCAL_API_BASE_URL;
 
 export const apiClient = async (endpoint: string, options: RequestInit = {}) => {
   const token = getCookie('JWtoken');
-  
+
   const headers = new Headers(options.headers);
   if (token) {
     headers.set('Authorization', `Bearer ${token}`);
