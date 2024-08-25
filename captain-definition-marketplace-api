@@ -2,10 +2,9 @@
   "schemaVersion": 2,
   "dockerfileLines": [
     "FROM node:21.6.2-alpine",
-    "WORKDIR /usr/src/app",
-    "COPY packages/marketplace-api/package*.json ./",
-    "RUN npm install --omit=dev && npm prune --production",
-    "COPY packages/marketplace-api/ ./",
+    "WORKDIR /usr/src/app",    
+    "COPY ./packages/marketplace-api/ /usr/src/app/",
+    "RUN npm install  && npm cache clean --force",
     "RUN npm run build",
     "ENV NODE_ENV=production",
     "ENV PORT=80",
