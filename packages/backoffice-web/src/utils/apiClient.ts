@@ -1,7 +1,4 @@
 import { getCookie } from 'cookies-next';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const API_BASE_URL =
   process.env.NODE_ENV === 'production'
@@ -16,7 +13,9 @@ export const apiClient = async (endpoint: string, options: RequestInit = {}) => 
   if (token) {
     headers.set('Authorization', `Bearer ${token}`);
   }
-  console.log(API_BASE_URL);
+  console.log('API_BASE_URL:', API_BASE_URL); // Verifica que API_BASE_URL esté correctamente configurado
+  console.log('process.env:', process.env); // Verifica las variables de entorno disponibles
+
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
     ...options,
     headers,
