@@ -1,6 +1,4 @@
 'use client';
-import 'bootstrap/dist/css/bootstrap.css'
-import '@tremor/react'
 import { Nunito } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar/Navbar';
