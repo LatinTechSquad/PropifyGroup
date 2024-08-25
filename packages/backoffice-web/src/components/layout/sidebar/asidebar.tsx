@@ -23,7 +23,7 @@ import logoutIcon from '@/assets/icons/logout.png';
 import user from '@/assets/icons/icon-group.png';
 import Dashboard from '@/app/dashboard/components/dashboard/Dashboard';
 import Zone from '@/app/dashboard/components/zone/zone';
-import Rate from '@/app/dashboard/components/rate/Rate';
+import Rate from '@/app/dashboard/components/rate/rate';
 import Percentage from '@/app/dashboard/components/percentage/percentage';
 import Metrics from '@/app/dashboard/components/metrics/metrics';
 import Comune from '@/app/dashboard/components/commune/commune';
@@ -31,7 +31,7 @@ import Chat from '@/app/dashboard/components/chat/chat';
 import Payments from '@/app/dashboard/components/payments/payments';
 import Recent from '@/app/dashboard/components/recent/recent';
 
-export default function asidebar() {
+export default function Asidebar() {
     const { logout } = useAuth();
 
     const handleLogout = () => {
