@@ -7,7 +7,6 @@
 "RUN npm install && npm cache clean --force",
 "RUN npm run build",
 "ENV NODE_ENV production",
-"ENV NEXT_PUBLIC_API_BASE_URL=https://api-backoffice.propifygroup.com/v1",
 "ENV PORT 80",
 "EXPOSE 80",
 "CMD [ \"npm\", \"start\" ]"
