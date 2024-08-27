@@ -1,7 +1,7 @@
 import { getCookie } from 'cookies-next';
 
 const API_BASE_URL =
-  process.env.NODE_ENV === 'production' ? 'https://api-backoffice.propifygroup.com/v1' : 'http://localhost:3002/v1';
+  process.env.NODE_ENV === 'production' ? 'https://api-marketplace.propifygroup.com/v1' : 'http://localhost:3002/v1';
 
 export const apiClient = async (endpoint: string, options: RequestInit = {}) => {
   const token = getCookie('JWtoken');
