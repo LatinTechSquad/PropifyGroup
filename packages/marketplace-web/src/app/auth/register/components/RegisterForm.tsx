@@ -12,11 +12,11 @@ type FormData = {
 	lastname: string;
 	email: string;
 	password: string;
-	phone: string; // Cambiar a string, recuenda que los numeros telefonicos puede tener ceros  ala izquierda
+	phone: string; 
 };
 
 const generateUUID = () => {
-	//Agregamos funcion para generar el id, lo ideal es que sea atraves de un servicio
+
 	return uuidv4();
 };
 
