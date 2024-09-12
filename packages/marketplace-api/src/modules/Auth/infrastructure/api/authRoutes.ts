@@ -35,14 +35,14 @@ router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     res
       .status(400)
       .json(
-        new ResponseBase<void>(false, httpStatus.BAD_REQUEST, httpStatus[400], 'Error logging User', undefined, [
+        new ResponseBase<void>(false, httpStatus.BAD_REQUEST, httpStatus[400], 'Error authenticating user', undefined, [
           'User width this email was not register',
         ]),
       );
   } else if (err instanceof NotMatchedPasswordError) {
     res
       .status(400)
-      .json(new ResponseBase<void>(false, httpStatus.BAD_REQUEST, httpStatus[400], 'Error logging User', undefined, ['Incorrect Password']));
+      .json(new ResponseBase<void>(false, httpStatus.BAD_REQUEST, httpStatus[400], 'Error authenticating ser', undefined, ['Incorrect Password']));
   } else {
     next(err);
   }
