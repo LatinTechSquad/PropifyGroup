@@ -1,0 +1,193 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                   String                 @id @default(uuid())
+  firstname            String                 @db.VarChar(100)
+  lastname             String                 @db.VarChar(100)
+  email                String                 @unique @db.VarChar(150)
+  password             String                 @db.VarChar(150)
+  photo                String?                @db.VarChar(300)
+  cell_phone           String                 @db.VarChar(15)
+  user_type            UserType               @default(Client)
+  role_id              String
+  is_property_owner    Boolean                @default(false)
+  properties           Property[]
+  messages_sent        Message[]              @relation("MessageSender")
+  messages_received    Message[]              @relation("MessageReceiver")
+  transactions         Transaction[]
+  role                 Role                   @relation(fields: [role_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  reviews_given        Review[]               @relation("ReviewAuthor")
+  reviews_received     Review[]               @relation("ReviewSubject")
+  notifications        Notification[]
+  premium_subscription PremiumSubscription?
+  contracts            Contract[]
+  conversations        Conversation[]
+  tokens               UserToken[]  
+}
+model UserToken {
+  id        String   @id @default(uuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  revoked   Boolean  @default(false)
+  user      User     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Role {
+  id         String   @id @default(uuid())
+  name       String   @db.VarChar(50)
+  state      String   @db.VarChar(10)
+  privileges String[]
+  users      User[]
+}
+
+model Property {
+  id              String         @id @default(uuid())
+  agent_reference String?        @db.VarChar(150)
+  address         String?        @db.VarChar(150)
+  num_rooms       Int?
+  num_bathrooms   Int?
+  price           Int?
+  state           PropertyState?
+  title           String?        @db.VarChar(300)
+  description     String?        @db.VarChar(1000)
+  google_map      String?        @db.VarChar(150)
+  owner_id        String
+  property_type   PropertyType
+  owner           User           @relation(fields: [owner_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  photos          RealEstatePhoto[]
+  reviews         Review[]       @relation("PropertyReviews")
+  publication_date String?       @db.VarChar(20)
+  publication_state PropertyPublicationState?
+  transactions       Transaction[]
+}
+
+model RealEstatePhoto {
+  id          String   @id @default(uuid())
+  photo       String   @db.VarChar(300)
+  property_id String
+  property    Property @relation(fields: [property_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Transaction {
+  id               String          @id @default(uuid())
+  transaction_type TransactionType
+  transaction_date String?         @db.VarChar(20)
+  user_id          String
+  property_id      String
+  user             User            @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  property         Property        @relation(fields: [property_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  payments         Payment[]
+}
+
+model Payment {
+  id             String      @id @default(uuid())
+  amount         Float
+  payment_date   DateTime
+  transaction_id String
+  transaction    Transaction @relation(fields: [transaction_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Message {
+  id              String       @id @default(uuid())
+  content         String       @db.VarChar(1000)
+  sent_at         DateTime     @default(now())
+  sender_id       String
+  receiver_id     String
+  conversation_id String
+  sender          User         @relation("MessageSender", fields: [sender_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  receiver        User         @relation("MessageReceiver", fields: [receiver_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  conversation    Conversation @relation(fields: [conversation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Conversation {
+  id           String    @id @default(uuid())
+  messages     Message[]
+  participants User[]
+}
+
+model Review {
+  id           String   @id @default(uuid())
+  content      String   @db.VarChar(1000)
+  rating       Int      @db.SmallInt
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  author_id    String
+  subject_id   String
+  property_id  String
+  author       User     @relation("ReviewAuthor", fields: [author_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  subject      User     @relation("ReviewSubject", fields: [subject_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  property     Property @relation("PropertyReviews", fields: [property_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Notification {
+  id         String    @id @default(uuid())
+  content    String    @db.VarChar(500)
+  created_at DateTime  @default(now())
+  read_at    DateTime?
+  user_id    String
+  user       User      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model PremiumSubscription {
+  id         String   @id @default(uuid())
+  start_date DateTime @default(now())
+  end_date   DateTime
+  user_id    String   @unique
+  user       User     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Contract {
+  id         String   @id @default(uuid())
+  content    String   @db.Text
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+enum PropertyState {
+  Available
+  Reserved
+  Rented
+  Sold
+}
+
+enum PropertyType {
+  Chalet
+  Attic
+  Commercial
+  Warehouse
+  Office
+  Estate
+  House
+  Studio
+  Apartment
+  Land
+}
+
+enum PropertyPublicationState {
+  Active
+  Inactive
+}
+
+enum TransactionType {
+  Sale
+  Rent
+}
+
+enum UserType {
+  Buyer
+  Seller
+  Landlord
+  Tenant
+  Agent
+  Client
+}

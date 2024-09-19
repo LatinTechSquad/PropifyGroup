@@ -1,0 +1,51 @@
+.dashboard {
+    width: 100%;
+    height: 100%;
+    
+    background-color: var(--color-fondo);
+    font-family: var(--font-base);
+  }
+  
+  .container-fluid {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--primary-color);
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -8px;
+  }
+  
+ 
+  
+  .pagos {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+  }
+  
+  .stats,
+  .metrics {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+  }
+  
+  .recientes-table {
+    width: 100%;
+    padding: 4px;
+    margin: 1px;
+    text-align: center;
+  }
+  
