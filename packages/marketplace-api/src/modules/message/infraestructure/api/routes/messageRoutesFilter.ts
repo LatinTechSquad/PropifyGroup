@@ -1,5 +1,5 @@
 import Express, { NextFunction, Request, Response } from 'express';
-import { messageContainer } from 'src/modules/message/messageContainer';
+import { messageContainer } from '../../../../../modules/message/messageContainer';
 
 import { GetReceivedMessagesController } from '../getReceivedMessagesController';
 import { GetSentMessagesController } from '../getSentMessagesController';
