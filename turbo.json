@@ -8,6 +8,8 @@
 		"test:unit": { "cache": false },
 		"test:features": { "cache": false },
 		"prisma:generate": { "cache": false},
-		"prisma:push": { "cache": false}
+		"prisma:push": { "cache": false},
+		"cypress:open": { "cache": false},
+		"cypress:run": { "cache": false}
 	}
 }
