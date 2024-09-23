@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
+    "concurrently": "^9.0.1",
     "turbo": "^2.0.9"
   },
   "scripts": {
@@ -18,7 +18,9 @@
     "test:unit": "turbo run test:unit",
     "test:features": "turbo run test:features",
     "prisma:generate": "turbo run prisma:generate",
-    "prisma:push": "turbo run prisma:push"
+    "prisma:push": "turbo run prisma:push",
+    "cypress:open": "turbo run cypress:open",
+    "cypress:run": "turbo run cypress:run"
   },
   "repository": {
     "type": "git",
@@ -34,12 +36,5 @@
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "npm@9.6.7",
-  "dependencies": {
-    "@headlessui/react": "^2.1.2",
-    "@headlessui/tailwindcss": "^0.2.1",
-    "@remixicon/react": "^4.2.0",
-    "next": "^14.2.5",
-    "tailwindcss": "^3.4.9"
-  }
+  "packageManager": "npm@9.6.7"
 }
