@@ -11,7 +11,8 @@ import { validateReqSchema } from '../../../Shared/infrastructure/api/validation
 
 const router = Router();
 
-const controller: IController = authContainer.resolve('AuthController');
+const authController: IController = authContainer.resolve('AuthController');
+const logoutController: IController = authContainer.resolve('LogoutController');
 
 router.post('/login', loginValidator, validateReqSchema, async (req: Request, res: Response, next: NextFunction) => {
   /**
@@ -21,7 +22,7 @@ router.post('/login', loginValidator, validateReqSchema, async (req: Request, re
         schema: { $ref: "#/components/schemas/LoginRequest" }
     }
      */
-  await controller.run(req, res, next);
+  await authController.run(req, res, next);
 });
 
 //router.post('/email/verify');
@@ -36,20 +37,7 @@ router.get('/logout', logoutInvalidator, validateReqSchema, async (req: Request,
     #swagger.responses[204] = { description: 'Logout successful, no content' }
     #swagger.responses[400] = { description: 'Invalid request' }
     */
-    try {
-      await controller.run(req, res, next);
-  
-      const response = new ResponseBase<void>(
-        true,
-        httpStatus.NO_CONTENT,
-        httpStatus[204],
-        'Logout successfully!!'
-      );
-
-      res.status(httpStatus.OK).send(response);
-    } catch (err) {
-      next(err);
-    }
+    await logoutController.run(req, res, next);
 });
 
 router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
