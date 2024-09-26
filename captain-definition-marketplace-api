@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 2,
+  "dockerfileLines": [
+    "FROM node:21.6.2-alpine",
+    "WORKDIR /usr/src/app",    
+    "COPY ./packages/marketplace-api/ /usr/src/app/",
+    "RUN npm install  && npm cache clean --force",
+    "RUN npm run build",
+    "ENV NODE_ENV=production",
+    "ENV PORT=80",
+    "ENV DOMAIN=propifygroup.com",
+    "EXPOSE 80",
+    "CMD [ \"npm\", \"start\" ]"
+  ]
+}
+

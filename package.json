@@ -7,12 +7,17 @@
     "doc": "docs"
   },
   "devDependencies": {
-    "turbo": "^1.12.4"
+    "@tailwindcss/forms": "^0.5.7",
+    "@tremor/react": "^3.17.4",
+    "concurrently": "^8.2.2",
+    "turbo": "^2.0.9"
   },
   "scripts": {
-    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "dev": "concurrently \"turbo run dev\" \"uvicorn packages.backoffice-api.main:app --reload --port 3003\"",
     "test": "turbo run test",
-    "test:unit":"turbo run test:unit",
+    "test:unit": "turbo run test:unit",
     "test:features": "turbo run test:features",
     "prisma:generate": "turbo run prisma:generate",
     "prisma:push": "turbo run prisma:push"
@@ -30,5 +35,13 @@
   "homepage": "https://github.com/dgsoto/Idea5-inmobiliaria#readme",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "packageManager": "npm@9.6.7",
+  "dependencies": {
+    "@headlessui/react": "^2.1.2",
+    "@headlessui/tailwindcss": "^0.2.1",
+    "@remixicon/react": "^4.2.0",
+    "next": "^14.2.5",
+    "tailwindcss": "^3.4.9"
+  }
 }
