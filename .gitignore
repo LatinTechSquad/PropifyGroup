@@ -167,3 +167,40 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+#**/packages/*
+!.gitkeep
+
+# Log files
+*.log
+
+# User secrets
+secrets.json
+
+# Local environment variables
+.env
+*.env
+
+# Rider files
+.idea/
+
+# ASP.NET Core Identity
+#appsettings.Development.json
+#appsettings.Production.json
+#appsettings.json
+**/wwwroot/uploads/
+
+# Visual Studio Code files
+.vscode/
+~/.vscode-root/*

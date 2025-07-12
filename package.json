@@ -13,7 +13,7 @@
   "scripts": {
     "build": "turbo run build",
     "start": "turbo run start",
-    "dev": "concurrently \"turbo run dev\" \"uvicorn packages.backoffice-api.main:app --reload --port 3003\"",
+    "dev": "turbo run dev",
     "test": "turbo run test",
     "test:unit": "turbo run test:unit",
     "test:features": "turbo run test:features",
